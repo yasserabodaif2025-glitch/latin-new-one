@@ -1,0 +1,9532 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+    "title": "Latin Academy API",
+    "version": "v1"
+    },
+    "paths": {
+    "/api/Areaes": {
+    "post": {
+    "tags": [
+    "Areaes"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateAreaDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateAreaDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateAreaDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Areaes/{id}": {
+    "delete": {
+    "tags": [
+    "Areaes"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "put": {
+    "tags": [
+    "Areaes"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateAreaDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateAreaDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateAreaDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "Areaes"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Areaes/restore/{id}": {
+    "put": {
+    "tags": [
+    "Areaes"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Areaes/pagination": {
+    "get": {
+    "tags": [
+    "Areaes"
+    ],
+    "parameters": [
+    {
+    "name": "Page",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "Limit",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "SortField",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "IsDesc",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    },
+    {
+    "name": "FreeText",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "OnlyDeleted",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/AreaDtoPaginationResult"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/AreaDtoPaginationResult"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/AreaDtoPaginationResult"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Auth/login": {
+    "post": {
+    "tags": [
+    "Auth"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/LoginRequestDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/LoginRequestDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/LoginRequestDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/LoginResponseDto"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/LoginResponseDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/LoginResponseDto"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Auth/refresh": {
+    "post": {
+    "tags": [
+    "Auth"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/RefreshTokenRequestDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/RefreshTokenRequestDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/RefreshTokenRequestDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/LoginResponseDto"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/LoginResponseDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/LoginResponseDto"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Branches": {
+    "post": {
+    "tags": [
+    "Branches"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateBranchDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateBranchDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateBranchDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Branches/{id}": {
+    "delete": {
+    "tags": [
+    "Branches"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "put": {
+    "tags": [
+    "Branches"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateBranchDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateBranchDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateBranchDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "Branches"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Branches/restore/{id}": {
+    "put": {
+    "tags": [
+    "Branches"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Branches/pagination": {
+    "get": {
+    "tags": [
+    "Branches"
+    ],
+    "parameters": [
+    {
+    "name": "Page",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "Limit",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "SortField",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "IsDesc",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    },
+    {
+    "name": "FreeText",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "OnlyDeleted",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/BranchDtoPaginationResult"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/BranchDtoPaginationResult"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/BranchDtoPaginationResult"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Campaigns/register": {
+    "post": {
+    "tags": [
+    "Campaigns"
+    ],
+    "parameters": [
+    {
+    "name": "referenceId",
+    "in": "query",
+    "schema": {
+    "type": "string",
+    "format": "uuid"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/RegisterLeadDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/RegisterLeadDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/RegisterLeadDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Campaigns/branches-by-reference/{referenceId}": {
+    "get": {
+    "tags": [
+    "Campaigns"
+    ],
+    "parameters": [
+    {
+    "name": "referenceId",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "string",
+    "format": "uuid"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Campaigns/courses-by-reference/{referenceId}": {
+    "get": {
+    "tags": [
+    "Campaigns"
+    ],
+    "parameters": [
+    {
+    "name": "referenceId",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "string",
+    "format": "uuid"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Campaigns": {
+    "post": {
+    "tags": [
+    "Campaigns"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateCampaignDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateCampaignDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateCampaignDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Campaigns/{id}": {
+    "delete": {
+    "tags": [
+    "Campaigns"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "put": {
+    "tags": [
+    "Campaigns"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateCampaignDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateCampaignDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateCampaignDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "Campaigns"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Campaigns/restore/{id}": {
+    "put": {
+    "tags": [
+    "Campaigns"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Campaigns/pagination": {
+    "get": {
+    "tags": [
+    "Campaigns"
+    ],
+    "parameters": [
+    {
+    "name": "Page",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "Limit",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "SortField",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "IsDesc",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    },
+    {
+    "name": "FreeText",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "OnlyDeleted",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/CampaignDtoPaginationResult"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CampaignDtoPaginationResult"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CampaignDtoPaginationResult"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Categories": {
+    "post": {
+    "tags": [
+    "Categories"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateCategoryDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateCategoryDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateCategoryDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Categories/{id}": {
+    "delete": {
+    "tags": [
+    "Categories"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "put": {
+    "tags": [
+    "Categories"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateCategoryDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateCategoryDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateCategoryDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "Categories"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Categories/restore/{id}": {
+    "put": {
+    "tags": [
+    "Categories"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Categories/pagination": {
+    "get": {
+    "tags": [
+    "Categories"
+    ],
+    "parameters": [
+    {
+    "name": "Page",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "Limit",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "SortField",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "IsDesc",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    },
+    {
+    "name": "FreeText",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "OnlyDeleted",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/CategoryDtoPaginationResult"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CategoryDtoPaginationResult"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CategoryDtoPaginationResult"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Cityes": {
+    "post": {
+    "tags": [
+    "Cityes"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateCityDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateCityDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateCityDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Cityes/{id}": {
+    "delete": {
+    "tags": [
+    "Cityes"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "put": {
+    "tags": [
+    "Cityes"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateCityDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateCityDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateCityDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "Cityes"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Cityes/restore/{id}": {
+    "put": {
+    "tags": [
+    "Cityes"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Cityes/pagination": {
+    "get": {
+    "tags": [
+    "Cityes"
+    ],
+    "parameters": [
+    {
+    "name": "Page",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "Limit",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "SortField",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "IsDesc",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    },
+    {
+    "name": "FreeText",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "OnlyDeleted",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/CityDtoPaginationResult"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CityDtoPaginationResult"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CityDtoPaginationResult"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/CourseEnrollment": {
+    "post": {
+    "tags": [
+    "CourseEnrollment"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateCourseEnrollmentDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateCourseEnrollmentDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateCourseEnrollmentDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Courses": {
+    "post": {
+    "tags": [
+    "Courses"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateCourseDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateCourseDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateCourseDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Courses/{id}": {
+    "delete": {
+    "tags": [
+    "Courses"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "put": {
+    "tags": [
+    "Courses"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateCourseDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateCourseDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateCourseDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "Courses"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Courses/restore/{id}": {
+    "put": {
+    "tags": [
+    "Courses"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Courses/pagination": {
+    "get": {
+    "tags": [
+    "Courses"
+    ],
+    "parameters": [
+    {
+    "name": "Page",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "Limit",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "SortField",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "IsDesc",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    },
+    {
+    "name": "FreeText",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "OnlyDeleted",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/CourseDtoPaginationResult"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CourseDtoPaginationResult"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CourseDtoPaginationResult"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/EducationalQualificationDescription": {
+    "post": {
+    "tags": [
+    "EducationalQualificationDescription"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateEducationalQualificationDescriptionDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateEducationalQualificationDescriptionDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateEducationalQualificationDescriptionDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/EducationalQualificationDescription/{id}": {
+    "delete": {
+    "tags": [
+    "EducationalQualificationDescription"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "put": {
+    "tags": [
+    "EducationalQualificationDescription"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateEducationalQualificationDescriptionDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateEducationalQualificationDescriptionDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateEducationalQualificationDescriptionDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "EducationalQualificationDescription"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/EducationalQualificationDescription/restore/{id}": {
+    "put": {
+    "tags": [
+    "EducationalQualificationDescription"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/EducationalQualificationDescription/pagination": {
+    "get": {
+    "tags": [
+    "EducationalQualificationDescription"
+    ],
+    "parameters": [
+    {
+    "name": "Page",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "Limit",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "SortField",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "IsDesc",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    },
+    {
+    "name": "FreeText",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "OnlyDeleted",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/EducationalQualificationDescriptionDtoPaginationResult"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/EducationalQualificationDescriptionDtoPaginationResult"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/EducationalQualificationDescriptionDtoPaginationResult"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/EducationalQualificationIssuer": {
+    "post": {
+    "tags": [
+    "EducationalQualificationIssuer"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateEducationalQualificationIssuerDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateEducationalQualificationIssuerDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateEducationalQualificationIssuerDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/EducationalQualificationIssuer/{id}": {
+    "delete": {
+    "tags": [
+    "EducationalQualificationIssuer"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "put": {
+    "tags": [
+    "EducationalQualificationIssuer"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateEducationalQualificationIssuerDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateEducationalQualificationIssuerDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateEducationalQualificationIssuerDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "EducationalQualificationIssuer"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/EducationalQualificationIssuer/restore/{id}": {
+    "put": {
+    "tags": [
+    "EducationalQualificationIssuer"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/EducationalQualificationIssuer/pagination": {
+    "get": {
+    "tags": [
+    "EducationalQualificationIssuer"
+    ],
+    "parameters": [
+    {
+    "name": "Page",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "Limit",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "SortField",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "IsDesc",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    },
+    {
+    "name": "FreeText",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "OnlyDeleted",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/EducationalQualificationIssuerDtoPaginationResult"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/EducationalQualificationIssuerDtoPaginationResult"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/EducationalQualificationIssuerDtoPaginationResult"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/EducationalQualificationType": {
+    "post": {
+    "tags": [
+    "EducationalQualificationType"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateEducationalQualificationTypeDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateEducationalQualificationTypeDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateEducationalQualificationTypeDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/EducationalQualificationType/{id}": {
+    "delete": {
+    "tags": [
+    "EducationalQualificationType"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "put": {
+    "tags": [
+    "EducationalQualificationType"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateEducationalQualificationTypeDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateEducationalQualificationTypeDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateEducationalQualificationTypeDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "EducationalQualificationType"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/EducationalQualificationType/restore/{id}": {
+    "put": {
+    "tags": [
+    "EducationalQualificationType"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/EducationalQualificationType/pagination": {
+    "get": {
+    "tags": [
+    "EducationalQualificationType"
+    ],
+    "parameters": [
+    {
+    "name": "Page",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "Limit",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "SortField",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "IsDesc",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    },
+    {
+    "name": "FreeText",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "OnlyDeleted",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/EducationalQualificationTypeDtoPaginationResult"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/EducationalQualificationTypeDtoPaginationResult"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/EducationalQualificationTypeDtoPaginationResult"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Employees": {
+    "post": {
+    "tags": [
+    "Employees"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateEmployeeDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateEmployeeDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateEmployeeDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Employees/{userId}": {
+    "put": {
+    "tags": [
+    "Employees"
+    ],
+    "parameters": [
+    {
+    "name": "userId",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateEmployeeDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateEmployeeDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateEmployeeDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Employees/{id}": {
+    "delete": {
+    "tags": [
+    "Employees"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "Employees"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Employees/restore/{id}": {
+    "put": {
+    "tags": [
+    "Employees"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Employees/{id}/status": {
+    "put": {
+    "tags": [
+    "Employees"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "type": "object",
+    "required": ["status", "reason"],
+    "properties": {
+        "status": {
+        "type": "string",
+        "enum": ["active", "inactive", "onLeave", "terminated"]
+        },
+        "reason": {
+        "type": "string"
+        },
+        "endDate": {
+        "type": "string",
+        "format": "date-time",
+        "nullable": true
+        }
+    }
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Employees/{id}/qualifications": {
+    "post": {
+    "tags": [
+    "Employees"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "type": "object",
+    "required": [
+        "qualificationTypeId",
+        "qualificationDescriptionId",
+        "qualificationIssuerId",
+        "issueDate"
+    ],
+    "properties": {
+        "qualificationTypeId": {
+        "type": "integer",
+        "format": "int64"
+        },
+        "qualificationDescriptionId": {
+        "type": "integer",
+        "format": "int64"
+        },
+        "qualificationIssuerId": {
+        "type": "integer",
+        "format": "int64"
+        },
+        "issueDate": {
+        "type": "string",
+        "format": "date-time"
+        }
+    }
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "Employees"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "application/json": {
+    "schema": {
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+        "id": {
+            "type": "integer",
+            "format": "int64"
+        },
+        "qualificationTypeId": {
+            "type": "integer",
+            "format": "int64"
+        },
+        "qualificationTypeName": {
+            "type": "string"
+        },
+        "qualificationDescriptionId": {
+            "type": "integer",
+            "format": "int64"
+        },
+        "qualificationDescriptionName": {
+            "type": "string"
+        },
+        "qualificationIssuerId": {
+            "type": "integer",
+            "format": "int64"
+        },
+        "qualificationIssuerName": {
+            "type": "string"
+        },
+        "issueDate": {
+            "type": "string",
+            "format": "date-time"
+        }
+        }
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Employees/{id}/roles": {
+    "put": {
+    "tags": [
+    "Employees"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "type": "object",
+    "required": ["roleIds"],
+    "properties": {
+        "roleIds": {
+        "type": "array",
+        "items": {
+            "type": "integer",
+            "format": "int64"
+        }
+        }
+    }
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Employees/pagination": {
+    "get": {
+    "tags": [
+    "Employees"
+    ],
+    "parameters": [
+    {
+    "name": "Page",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "Limit",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "SortField",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "IsDesc",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    },
+    {
+    "name": "FreeText",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "OnlyDeleted",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/EmployeeDtoPaginationResult"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/EmployeeDtoPaginationResult"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/EmployeeDtoPaginationResult"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+
+    "/api/FinancialOperations/student/balances/{studentId}": {
+    "get": {
+    "tags": [
+    "FinancialOperations"
+    ],
+    "parameters": [
+    {
+    "name": "studentId",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/FinancialOperations/student/pay": {
+    "post": {
+    "tags": [
+    "FinancialOperations"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/PayEnrollmentDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/PayEnrollmentDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/PayEnrollmentDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/FinancialOperations/service-charge": {
+    "post": {
+    "tags": [
+    "FinancialOperations"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateServiceChargeDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateServiceChargeDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateServiceChargeDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/FinancialOperations/student/service-charges/{studentId}": {
+    "get": {
+    "tags": [
+    "FinancialOperations"
+    ],
+    "parameters": [
+    {
+    "name": "studentId",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/FinancialOperations/expense": {
+    "post": {
+    "tags": [
+    "FinancialOperations"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateExpenseDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateExpenseDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateExpenseDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/FinancialOperations/my-expense": {
+    "post": {
+    "tags": [
+    "FinancialOperations"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateStaffExpenseDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateStaffExpenseDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateStaffExpenseDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/FinancialOperations/my-safe-balance": {
+    "get": {
+    "tags": [
+    "FinancialOperations"
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/FinancialOperations/close-my-safe": {
+    "post": {
+    "tags": [
+    "FinancialOperations"
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Groups/close-group": {
+    "post": {
+    "tags": [
+    "Groups"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CloseGroupDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CloseGroupDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CloseGroupDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Groups/add-extra-session": {
+    "post": {
+    "tags": [
+    "Groups"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/AddExtraSessionDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/AddExtraSessionDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/AddExtraSessionDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Groups/activate": {
+    "post": {
+    "tags": [
+    "Groups"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/ActivateGroupRequestDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/ActivateGroupRequestDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/ActivateGroupRequestDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Groups/deactivate/{groupId}": {
+    "post": {
+    "tags": [
+    "Groups"
+    ],
+    "parameters": [
+    {
+    "name": "groupId",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Groups/enrollments/{groupId}": {
+    "get": {
+    "tags": [
+    "Groups"
+    ],
+    "parameters": [
+    {
+    "name": "groupId",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Groups/enroll/{enrollmentId}/group/{groupId}": {
+    "post": {
+    "tags": [
+    "Groups"
+    ],
+    "parameters": [
+    {
+    "name": "enrollmentId",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    {
+    "name": "groupId",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Groups/add-students-to-active-group": {
+    "post": {
+    "tags": [
+    "Groups"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/ActivateGroupRequestDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/ActivateGroupRequestDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/ActivateGroupRequestDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Groups": {
+    "post": {
+    "tags": [
+    "Groups"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateGroupDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateGroupDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateGroupDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Groups/{id}": {
+    "delete": {
+    "tags": [
+    "Groups"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "put": {
+    "tags": [
+    "Groups"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateGroupDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateGroupDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateGroupDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "Groups"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Groups/restore/{id}": {
+    "put": {
+    "tags": [
+    "Groups"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Groups/pagination": {
+    "get": {
+    "tags": [
+    "Groups"
+    ],
+    "parameters": [
+    {
+    "name": "Page",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "Limit",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "SortField",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "IsDesc",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    },
+    {
+    "name": "FreeText",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "OnlyDeleted",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/GroupDtoPaginationResult"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/GroupDtoPaginationResult"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/GroupDtoPaginationResult"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/HelpTables/Area": {
+    "get": {
+    "tags": [
+    "HelpTables"
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/HelpTables/Branch": {
+    "get": {
+    "tags": [
+    "HelpTables"
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/HelpTables/Category": {
+    "get": {
+    "tags": [
+    "HelpTables"
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/HelpTables/City": {
+    "get": {
+    "tags": [
+    "HelpTables"
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/HelpTables/EducationalQualificationDescription": {
+    "get": {
+    "tags": [
+    "HelpTables"
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/HelpTables/EducationalQualificationIssuer": {
+    "get": {
+    "tags": [
+    "HelpTables"
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/HelpTables/EducationalQualificationType": {
+    "get": {
+    "tags": [
+    "HelpTables"
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/HelpTables/GroupDays": {
+    "get": {
+    "tags": [
+    "HelpTables"
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/HelpTables/GroupStatus": {
+    "get": {
+    "tags": [
+    "HelpTables"
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/HelpTables/Permission": {
+    "get": {
+    "tags": [
+    "HelpTables"
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/HelpTables/Room": {
+    "get": {
+    "tags": [
+    "HelpTables"
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/HelpTables/StudentFlowStep": {
+    "get": {
+    "tags": [
+    "HelpTables"
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/HelpTables/RoomType": {
+    "get": {
+    "tags": [
+    "HelpTables"
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/HelpTables/SalaryType": {
+    "get": {
+    "tags": [
+    "HelpTables"
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/HelpTables/GetTodaySessions": {
+    "get": {
+    "tags": [
+    "HelpTables"
+    ],
+    "parameters": [
+    {
+    "name": "branchId",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/HelpTables/instructors-levels/{courseId}": {
+    "get": {
+    "tags": [
+    "HelpTables"
+    ],
+    "parameters": [
+    {
+    "name": "courseId",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Instructors/{id}": {
+    "put": {
+    "tags": [
+    "Instructors"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateInstructorDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateInstructorDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateInstructorDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "delete": {
+    "tags": [
+    "Instructors"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "Instructors"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Instructors": {
+    "post": {
+    "tags": [
+    "Instructors"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateInstructorDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateInstructorDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateInstructorDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Instructors/restore/{id}": {
+    "put": {
+    "tags": [
+    "Instructors"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Instructors/pagination": {
+    "get": {
+    "tags": [
+    "Instructors"
+    ],
+    "parameters": [
+    {
+    "name": "Page",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "Limit",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "SortField",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "IsDesc",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    },
+    {
+    "name": "FreeText",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "OnlyDeleted",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/InstructorDtoPaginationResult"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/InstructorDtoPaginationResult"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/InstructorDtoPaginationResult"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Leads": {
+    "post": {
+    "tags": [
+    "Leads"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateLeadDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateLeadDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateLeadDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Leads/{id}": {
+    "delete": {
+    "tags": [
+    "Leads"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "put": {
+    "tags": [
+    "Leads"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateLeadDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateLeadDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateLeadDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "Leads"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Leads/restore/{id}": {
+    "put": {
+    "tags": [
+    "Leads"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Leads/pagination": {
+    "get": {
+    "tags": [
+    "Leads"
+    ],
+    "parameters": [
+    {
+    "name": "Page",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "Limit",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "SortField",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "IsDesc",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    },
+    {
+    "name": "FreeText",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "OnlyDeleted",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/LeadDtoPaginationResult"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/LeadDtoPaginationResult"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/LeadDtoPaginationResult"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Levels": {
+    "post": {
+    "tags": [
+    "Levels"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateLevelDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateLevelDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateLevelDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Levels/{id}": {
+    "delete": {
+    "tags": [
+    "Levels"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "put": {
+    "tags": [
+    "Levels"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateLevelDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateLevelDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateLevelDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "Levels"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Levels/restore/{id}": {
+    "put": {
+    "tags": [
+    "Levels"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Levels/pagination": {
+    "get": {
+    "tags": [
+    "Levels"
+    ],
+    "parameters": [
+    {
+    "name": "Page",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "Limit",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "SortField",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "IsDesc",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    },
+    {
+    "name": "FreeText",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "OnlyDeleted",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/LevelDtoPaginationResult"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/LevelDtoPaginationResult"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/LevelDtoPaginationResult"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/MessageTemplates": {
+    "post": {
+    "tags": [
+    "MessageTemplates"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateMessageTemplateDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateMessageTemplateDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateMessageTemplateDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/MessageTemplates/{id}": {
+    "delete": {
+    "tags": [
+    "MessageTemplates"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "put": {
+    "tags": [
+    "MessageTemplates"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateMessageTemplateDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateMessageTemplateDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateMessageTemplateDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "MessageTemplates"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/MessageTemplates/restore/{id}": {
+    "put": {
+    "tags": [
+    "MessageTemplates"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/MessageTemplates/pagination": {
+    "get": {
+    "tags": [
+    "MessageTemplates"
+    ],
+    "parameters": [
+    {
+    "name": "Page",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "Limit",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "SortField",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "IsDesc",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    },
+    {
+    "name": "FreeText",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "OnlyDeleted",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/MessageTemplateDtoPaginationResult"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/MessageTemplateDtoPaginationResult"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/MessageTemplateDtoPaginationResult"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Roles": {
+    "post": {
+    "tags": [
+    "Roles"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateRoleDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateRoleDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateRoleDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Roles/{id}": {
+    "delete": {
+    "tags": [
+    "Roles"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "put": {
+    "tags": [
+    "Roles"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateRoleDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateRoleDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateRoleDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "Roles"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Roles/restore/{id}": {
+    "put": {
+    "tags": [
+    "Roles"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Roles/pagination": {
+    "get": {
+    "tags": [
+    "Roles"
+    ],
+    "parameters": [
+    {
+    "name": "Page",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "Limit",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "SortField",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "IsDesc",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    },
+    {
+    "name": "FreeText",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "OnlyDeleted",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/RoleDtoPaginationResult"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/RoleDtoPaginationResult"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/RoleDtoPaginationResult"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Rooms": {
+    "post": {
+    "tags": [
+    "Rooms"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateRoomDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateRoomDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateRoomDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Rooms/{id}": {
+    "delete": {
+    "tags": [
+    "Rooms"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "put": {
+    "tags": [
+    "Rooms"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateRoomDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateRoomDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateRoomDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "Rooms"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Rooms/restore/{id}": {
+    "put": {
+    "tags": [
+    "Rooms"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Rooms/pagination": {
+    "get": {
+    "tags": [
+    "Rooms"
+    ],
+    "parameters": [
+    {
+    "name": "Page",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "Limit",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "SortField",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "IsDesc",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    },
+    {
+    "name": "FreeText",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "OnlyDeleted",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/RoomDtoPaginationResult"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/RoomDtoPaginationResult"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/RoomDtoPaginationResult"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Sessions": {
+    "post": {
+    "tags": [
+    "Sessions"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateSessionDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateSessionDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateSessionDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Sessions/{id}": {
+    "delete": {
+    "tags": [
+    "Sessions"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "put": {
+    "tags": [
+    "Sessions"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateSessionDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateSessionDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateSessionDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "Sessions"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Sessions/restore/{id}": {
+    "put": {
+    "tags": [
+    "Sessions"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Sessions/pagination": {
+    "get": {
+    "tags": [
+    "Sessions"
+    ],
+    "parameters": [
+    {
+    "name": "Page",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "Limit",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "SortField",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "IsDesc",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    },
+    {
+    "name": "FreeText",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "OnlyDeleted",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/SessionDtoPaginationResult"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/SessionDtoPaginationResult"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/SessionDtoPaginationResult"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Students": {
+    "post": {
+    "tags": [
+    "Students"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateStudentDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateStudentDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateStudentDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Students/{id}": {
+    "delete": {
+    "tags": [
+    "Students"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "put": {
+    "tags": [
+    "Students"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateStudentDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateStudentDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateStudentDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "Students"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Students/restore/{id}": {
+    "put": {
+    "tags": [
+    "Students"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Students/pagination": {
+    "get": {
+    "tags": [
+    "Students"
+    ],
+    "parameters": [
+    {
+    "name": "Page",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "Limit",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "SortField",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "IsDesc",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    },
+    {
+    "name": "FreeText",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "OnlyDeleted",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/StudentDtoPaginationResult"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/StudentDtoPaginationResult"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/StudentDtoPaginationResult"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/StudentSource": {
+    "post": {
+    "tags": [
+    "StudentSource"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateStudentSourceDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateStudentSourceDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateStudentSourceDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/StudentSource/{id}": {
+    "delete": {
+    "tags": [
+    "StudentSource"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "put": {
+    "tags": [
+    "StudentSource"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateStudentSourceDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateStudentSourceDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateStudentSourceDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "StudentSource"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/StudentSource/restore/{id}": {
+    "put": {
+    "tags": [
+    "StudentSource"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/StudentSource/pagination": {
+    "get": {
+    "tags": [
+    "StudentSource"
+    ],
+    "parameters": [
+    {
+    "name": "Page",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "Limit",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "SortField",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "IsDesc",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    },
+    {
+    "name": "FreeText",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "OnlyDeleted",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/StudentSourceDtoPaginationResult"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/StudentSourceDtoPaginationResult"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/StudentSourceDtoPaginationResult"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Users": {
+    "post": {
+    "tags": [
+    "Users"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateUserDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateUserDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/CreateUserDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/Users/{id}": {
+    "put": {
+    "tags": [
+    "Users"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateUserDto"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateUserDto"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/UpdateUserDto"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "delete": {
+    "tags": [
+    "Users"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    },
+    "get": {
+    "tags": [
+    "Users"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Users/restore/{id}": {
+    "put": {
+    "tags": [
+    "Users"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/api/Users/pagination": {
+    "get": {
+    "tags": [
+    "Users"
+    ],
+    "parameters": [
+    {
+    "name": "Page",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "Limit",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    {
+    "name": "SortField",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "IsDesc",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    },
+    {
+    "name": "FreeText",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "OnlyDeleted",
+    "in": "query",
+    "schema": {
+    "type": "boolean"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "text/plain": {
+    "schema": {
+    "$ref": "#/components/schemas/UserDtoPaginationResult"
+    }
+    },
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UserDtoPaginationResult"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UserDtoPaginationResult"
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "components": {
+    "schemas": {
+    "ActivateGroupEnrollmentDto": {
+    "required": [
+    "discount",
+    "studentId"
+    ],
+    "type": "object",
+    "properties": {
+    "studentId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "discount": {
+    "type": "number",
+    "format": "double"
+    }
+    },
+    "additionalProperties": false
+    },
+    "ActivateGroupRequestDto": {
+    "required": [
+    "enrollments",
+    "groupId"
+    ],
+    "type": "object",
+    "properties": {
+    "groupId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "enrollments": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/ActivateGroupEnrollmentDto"
+    }
+    }
+    },
+    "additionalProperties": false
+    },
+    "AddExtraSessionDto": {
+    "required": [
+    "groupId",
+    "startTime"
+    ],
+    "type": "object",
+    "properties": {
+    "groupId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "startTime": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "roomId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "instructorId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "AreaDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    },
+    "cityId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "cityName": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "AreaDtoPaginationResult": {
+    "type": "object",
+    "properties": {
+    "data": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/AreaDto"
+    },
+    "nullable": true
+    },
+    "total": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "BranchDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    },
+    "address": {
+    "type": "string",
+    "nullable": true
+    },
+    "areaId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "areaName": {
+    "type": "string",
+    "nullable": true
+    },
+    "campaignsCount": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    "additionalProperties": false
+    },
+    "BranchDtoPaginationResult": {
+    "type": "object",
+    "properties": {
+    "data": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/BranchDto"
+    },
+    "nullable": true
+    },
+    "total": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CampaignDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    },
+    "description": {
+    "type": "string",
+    "nullable": true
+    },
+    "startDate": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "endDate": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "referenceId": {
+    "type": "string",
+    "format": "uuid"
+    },
+    "leads": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/LeadDto"
+    },
+    "nullable": true
+    },
+    "branchesIds": {
+    "type": "array",
+    "items": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "nullable": true
+    },
+    "branchesNames": {
+    "type": "array",
+    "items": {
+    "type": "string"
+    },
+    "nullable": true
+    },
+    "coursesIds": {
+    "type": "array",
+    "items": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "nullable": true
+    },
+    "coursesNames": {
+    "type": "array",
+    "items": {
+    "type": "string"
+    },
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "CampaignDtoPaginationResult": {
+    "type": "object",
+    "properties": {
+    "data": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/CampaignDto"
+    },
+    "nullable": true
+    },
+    "total": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CategoryDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    },
+    "description": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "CategoryDtoPaginationResult": {
+    "type": "object",
+    "properties": {
+    "data": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/CategoryDto"
+    },
+    "nullable": true
+    },
+    "total": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CityDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "CityDtoPaginationResult": {
+    "type": "object",
+    "properties": {
+    "data": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/CityDto"
+    },
+    "nullable": true
+    },
+    "total": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CloseGroupDto": {
+    "required": [
+    "groupId"
+    ],
+    "type": "object",
+    "properties": {
+    "groupId": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CourseDto": {
+    "required": [
+    "levels"
+    ],
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    },
+    "description": {
+    "type": "string",
+    "nullable": true
+    },
+    "isActive": {
+    "type": "boolean"
+    },
+    "categoryId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "categoryName": {
+    "type": "string",
+    "nullable": true
+    },
+    "applicationId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "levels": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/LevelDto"
+    },
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "CourseDtoPaginationResult": {
+    "type": "object",
+    "properties": {
+    "data": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/CourseDto"
+    },
+    "nullable": true
+    },
+    "total": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateAreaDto": {
+    "type": "object",
+    "properties": {
+    "name": {
+    "type": "string",
+    "nullable": true
+    },
+    "cityId": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateBranchDto": {
+    "required": [
+    "address",
+    "areaId",
+    "name"
+    ],
+    "type": "object",
+    "properties": {
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string"
+    },
+    "address": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string"
+    },
+    "areaId": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateCampaignDto": {
+    "required": [
+    "name",
+    "startDate"
+    ],
+    "type": "object",
+    "properties": {
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string"
+    },
+    "description": {
+    "maxLength": 1000,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "startDate": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "endDate": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "leads": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/CreateLeadDto"
+    },
+    "nullable": true
+    },
+    "branchIds": {
+    "type": "array",
+    "items": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "nullable": true
+    },
+    "coursesIds": {
+    "type": "array",
+    "items": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateCategoryDto": {
+    "required": [
+    "name"
+    ],
+    "type": "object",
+    "properties": {
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string"
+    },
+    "description": {
+    "maxLength": 1000,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateCityDto": {
+    "type": "object",
+    "properties": {
+    "name": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateCourseDto": {
+    "required": [
+    "categoryId",
+    "levels",
+    "name"
+    ],
+    "type": "object",
+    "properties": {
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string"
+    },
+    "description": {
+    "maxLength": 1000,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "categoryId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "isActive": {
+    "type": "boolean"
+    },
+    "levels": {
+    "minItems": 1,
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/CreateLevelDto"
+    }
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateCourseEnrollmentDto": {
+    "required": [
+    "deposit",
+    "groupId",
+    "studentId"
+    ],
+    "type": "object",
+    "properties": {
+    "studentId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "groupId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "deposit": {
+    "type": "number",
+    "format": "double"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateCoursePaymentDto": {
+    "required": [
+    "amount",
+    "courseEnrollmentId"
+    ],
+    "type": "object",
+    "properties": {
+    "courseEnrollmentId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "amount": {
+    "type": "number",
+    "format": "double"
+    },
+    "description": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateDailyCashReportDto": {
+    "type": "object",
+    "properties": {
+    "reportDate": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "totalCollected": {
+    "type": "number",
+    "format": "double"
+    },
+    "totalExpenses": {
+    "type": "number",
+    "format": "double"
+    },
+    "netBalance": {
+    "type": "number",
+    "format": "double"
+    },
+    "mainSafeId": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateEducationalQualificationDescriptionDto": {
+    "required": [
+    "name"
+    ],
+    "type": "object",
+    "properties": {
+    "name": {
+    "maxLength": 100,
+    "minLength": 0,
+    "type": "string"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateEducationalQualificationIssuerDto": {
+    "required": [
+    "name"
+    ],
+    "type": "object",
+    "properties": {
+    "name": {
+    "maxLength": 100,
+    "minLength": 0,
+    "type": "string"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateEducationalQualificationTypeDto": {
+    "required": [
+    "name"
+    ],
+    "type": "object",
+    "properties": {
+    "name": {
+    "maxLength": 100,
+    "minLength": 0,
+    "type": "string"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateEmployeeDto": {
+    "required": [
+    "email",
+    "name",
+    "status"
+    ],
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string"
+    },
+    "email": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string",
+    "format": "email"
+    },
+    "password": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "phone": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "address": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "nationalId": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "cityId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "department": {
+    "type": "string",
+    "nullable": true
+    },
+    "salary": {
+    "type": "number",
+    "format": "double"
+    },
+    "salaryTypeId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "jobTitle": {
+    "type": "string",
+    "nullable": true
+    },
+    "employmentStatus": {
+    "type": "string",
+    "enum": ["active", "inactive", "onLeave", "terminated"],
+    "description": "حالة الموظف الوظيفية (legacy lowercase enum, kept for backward compatibility)",
+    "nullable": true
+    },
+    "hireDate": {
+    "type": "string",
+    "format": "date-time",
+    "description": "تاريخ التعيين"
+    },
+    "educationalQualifications": {
+    "type": "array",
+    "items": {
+    "type": "object",
+    "properties": {
+        "qualificationTypeId": {
+        "type": "integer",
+        "format": "int64"
+        },
+        "qualificationDescriptionId": {
+        "type": "integer",
+        "format": "int64"
+        },
+        "qualificationIssuerId": {
+        "type": "integer",
+        "format": "int64"
+        },
+        "issueDate": {
+        "type": "string",
+        "format": "date-time"
+        }
+    }
+    },
+    "description": "المؤهلات التعليمية"
+    },
+    "roleIds": {
+    "type": "array",
+    "items": {
+        "type": "integer",
+        "format": "int64"
+    },
+    "description": "الأدوار الوظيفية"
+    }
+    ,
+    "roleId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true,
+    "description": "Primary role id (compatibility with client single-role field)"
+    },
+    "educationalQualificationId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true,
+    "description": "Primary educational qualification id"
+    },
+    "birthDate": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true,
+    "description": "Birth date"
+    },
+    "status": {
+    "type": "string",
+    "enum": ["ACTIVE", "SUSPENDED", "TRAINING", "TERMINATED"],
+    "description": "Employment status (uppercase variant used by client)"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateExpenseDto": {
+    "required": [
+    "accountCode",
+    "amount",
+    "description",
+    "fromSafeId"
+    ],
+    "type": "object",
+    "properties": {
+    "fromSafeId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "accountCode": {
+    "minLength": 1,
+    "type": "string"
+    },
+    "amount": {
+    "minimum": 0.01,
+    "type": "number",
+    "format": "double"
+    },
+    "description": {
+    "minLength": 1,
+    "type": "string"
+    },
+    "expenseDate": {
+    "type": "string",
+    "format": "date-time"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateGroupDto": {
+    "required": [
+    "instructorId",
+    "levelId",
+    "name",
+    "roomId",
+    "studentIds"
+    ],
+    "type": "object",
+    "properties": {
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string"
+    },
+    "startDate": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "endDate": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "startTime": {
+    "type": "string",
+    "format": "time"
+    },
+    "endTime": {
+    "type": "string",
+    "format": "time",
+    "nullable": true
+    },
+    "instructorId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "levelId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "roomId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "studentIds": {
+    "type": "array",
+    "items": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "days": {
+    "type": "array",
+    "items": {
+    "type": "integer",
+    "format": "int32"
+    },
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateInstructorDto": {
+    "required": [
+    "email",
+    "name"
+    ],
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string"
+    },
+    "email": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string",
+    "format": "email"
+    },
+    "password": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "phone": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "address": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "nationalId": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "cityId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "salary": {
+    "type": "number",
+    "format": "double"
+    },
+    "salaryTypeId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "coursesIds": {
+    "type": "array",
+    "items": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateLeadDto": {
+    "required": [
+    "name"
+    ],
+    "type": "object",
+    "properties": {
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string"
+    },
+    "email": {
+    "type": "string",
+    "nullable": true
+    },
+    "phone": {
+    "maxLength": 50,
+    "minLength": 0,
+    "type": "string",
+    "format": "tel",
+    "nullable": true
+    },
+    "address": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "areaId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "birthdate": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "educationalQualificationDescriptionId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "educationalQualificationTypeId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "educationalQualificationIssuerId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "studentSourceId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "studentId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "campaignId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "status": {
+    "type": "string",
+    "nullable": true
+    },
+    "courseId": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateLevelDto": {
+    "required": [
+    "name"
+    ],
+    "type": "object",
+    "properties": {
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string"
+    },
+    "description": {
+    "maxLength": 1000,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "sessionsDiortion": {
+    "type": "number",
+    "format": "float"
+    },
+    "price": {
+    "type": "number",
+    "format": "double"
+    },
+    "sessionsCount": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateMessageTemplateDto": {
+    "type": "object",
+    "properties": {
+    "name": {
+    "type": "string",
+    "nullable": true
+    },
+    "sendAutomatically": {
+    "type": "boolean",
+    "nullable": true
+    },
+    "courseId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "body": {
+    "type": "string",
+    "nullable": true
+    },
+    "trigger": {
+    "$ref": "#/components/schemas/StudentFlowStep"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateRoleDto": {
+    "type": "object",
+    "properties": {
+    "name": {
+    "type": "string",
+    "nullable": true
+    },
+    "description": {
+    "type": "string",
+    "nullable": true
+    },
+    "permissionIds": {
+    "type": "array",
+    "items": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateRoomDto": {
+    "required": [
+    "name"
+    ],
+    "type": "object",
+    "properties": {
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string"
+    },
+    "type": {
+    "$ref": "#/components/schemas/RoomType"
+    },
+    "capacity": {
+    "maximum": 2147483647,
+    "minimum": 1,
+    "type": "integer",
+    "format": "int32",
+    "nullable": true
+    },
+    "branchId": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateServiceChargeDto": {
+    "required": [
+    "amount",
+    "serviceType",
+    "studentId"
+    ],
+    "type": "object",
+    "properties": {
+    "studentId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "serviceType": {
+    "minLength": 1,
+    "type": "string"
+    },
+    "amount": {
+    "minimum": 0.01,
+    "type": "number",
+    "format": "double"
+    },
+    "description": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateSessionDto": {
+    "required": [
+    "groupId",
+    "instructorId",
+    "roomId",
+    "startTime"
+    ],
+    "type": "object",
+    "properties": {
+    "roomId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "instructorId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "startTime": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "sessionStudents": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/CreateSessionStudentDto"
+    },
+    "nullable": true
+    },
+    "groupId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "notes": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateSessionStudentDto": {
+    "required": [
+    "studentId"
+    ],
+    "type": "object",
+    "properties": {
+    "studentId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "isPresent": {
+    "type": "boolean"
+    },
+    "notes": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateStaffExpenseDto": {
+    "required": [
+    "amount",
+    "description"
+    ],
+    "type": "object",
+    "properties": {
+    "amount": {
+    "minimum": 0.01,
+    "type": "number",
+    "format": "double"
+    },
+    "description": {
+    "minLength": 1,
+    "type": "string"
+    },
+    "expenseDate": {
+    "type": "string",
+    "format": "date-time"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateStudentDto": {
+    "required": [
+    "name"
+    ],
+    "type": "object",
+    "properties": {
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string"
+    },
+    "email": {
+    "type": "string",
+    "nullable": true
+    },
+    "phone": {
+    "maxLength": 50,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "address": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "areaId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "birthdate": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "educationalQualificationDescriptionId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "educationalQualificationTypeId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "educationalQualificationIssuerId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "studentSourceId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateStudentPaymentDto": {
+    "type": "object",
+    "properties": {
+    "studentId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "enrollmentId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "amount": {
+    "type": "number",
+    "format": "double"
+    },
+    "description": {
+    "type": "string",
+    "nullable": true
+    },
+    "safeId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "paymentMethod": {
+    "type": "string",
+    "nullable": true
+    },
+    "paymentDate": {
+    "type": "string",
+    "format": "date-time"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateStudentSourceDto": {
+    "required": [
+    "name"
+    ],
+    "type": "object",
+    "properties": {
+    "name": {
+    "maxLength": 100,
+    "minLength": 0,
+    "type": "string"
+    }
+    },
+    "additionalProperties": false
+    },
+    "CreateUserDto": {
+    "required": [
+    "email",
+    "name",
+    "password"
+    ],
+    "type": "object",
+    "properties": {
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string"
+    },
+    "email": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string",
+    "format": "email"
+    },
+    "password": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string"
+    },
+    "image": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "phone": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "address": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "nationalId": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "cityId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "education": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "salaryTypeId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "salary": {
+    "type": "number",
+    "format": "double"
+    },
+    "roleIds": {
+    "type": "array",
+    "items": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "EducationalQualificationDescriptionDto": {
+    "required": [
+    "name"
+    ],
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "EducationalQualificationDescriptionDtoPaginationResult": {
+    "type": "object",
+    "properties": {
+    "data": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/EducationalQualificationDescriptionDto"
+    },
+    "nullable": true
+    },
+    "total": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "EducationalQualificationIssuerDto": {
+    "required": [
+    "name"
+    ],
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "EducationalQualificationIssuerDtoPaginationResult": {
+    "type": "object",
+    "properties": {
+    "data": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/EducationalQualificationIssuerDto"
+    },
+    "nullable": true
+    },
+    "total": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "EducationalQualificationTypeDto": {
+    "required": [
+    "name"
+    ],
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "EducationalQualificationTypeDtoPaginationResult": {
+    "type": "object",
+    "properties": {
+    "data": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/EducationalQualificationTypeDto"
+    },
+    "nullable": true
+    },
+    "total": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "EmployeeDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "email": {
+    "type": "string",
+    "nullable": true
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    },
+    "phone": {
+    "type": "string",
+    "nullable": true
+    },
+    "address": {
+    "type": "string",
+    "nullable": true
+    },
+    "nationalId": {
+    "type": "string",
+    "nullable": true
+    },
+    "cityName": {
+    "type": "string",
+    "nullable": true
+    },
+    "cityId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "department": {
+    "type": "string",
+    "nullable": true
+    },
+    "salary": {
+    "type": "number",
+    "format": "double"
+    },
+    "salaryTypeId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "salaryTypeName": {
+    "type": "string",
+    "nullable": true
+    },
+    "jobTitle": {
+    "type": "string",
+    "nullable": true
+    },
+    "employmentStatus": {
+    "type": "string",
+    "enum": ["active", "inactive", "onLeave", "terminated"]
+    },
+    "hireDate": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "terminationDate": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "educationalQualifications": {
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+        "id": {
+            "type": "integer",
+            "format": "int64"
+        },
+        "qualificationTypeId": {
+            "type": "integer",
+            "format": "int64"
+        },
+        "qualificationTypeName": {
+            "type": "string"
+        },
+        "qualificationDescriptionId": {
+            "type": "integer",
+            "format": "int64"
+        },
+        "qualificationDescriptionName": {
+            "type": "string"
+        },
+        "qualificationIssuerId": {
+            "type": "integer",
+            "format": "int64"
+        },
+        "qualificationIssuerName": {
+            "type": "string"
+        },
+        "issueDate": {
+            "type": "string",
+            "format": "date-time"
+        }
+        }
+    }
+    },
+    "roles": {
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+        "id": {
+            "type": "integer",
+            "format": "int64"
+        },
+        "name": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        }
+        }
+    }
+    },
+    "statusHistory": {
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+        "status": {
+            "type": "string",
+            "enum": ["active", "inactive", "onLeave", "terminated"]
+        },
+        "startDate": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+        },
+        "reason": {
+            "type": "string"
+        }
+        }
+    }
+    }
+    },
+    "additionalProperties": false
+    },
+    "EmployeeDtoPaginationResult": {
+    "type": "object",
+    "properties": {
+    "data": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/EmployeeDto"
+    },
+    "nullable": true
+    },
+    "total": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "GroupDays": {
+    "enum": [
+    "None",
+    "Saturday",
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday"
+    ],
+    "type": "string"
+    },
+    "GroupDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    },
+    "startDate": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "endDate": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "price": {
+    "type": "number",
+    "format": "double"
+    },
+    "instructorId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "instructorName": {
+    "type": "string",
+    "nullable": true
+    },
+    "branchId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "branchName": {
+    "type": "string",
+    "nullable": true
+    },
+    "levelId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "levelName": {
+    "type": "string",
+    "nullable": true
+    },
+    "courseId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "courseName": {
+    "type": "string",
+    "nullable": true
+    },
+    "statusId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "statusName": {
+    "type": "string",
+    "nullable": true
+    },
+    "roomId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "roomName": {
+    "type": "string",
+    "nullable": true
+    },
+    "roomCapacity": {
+    "type": "integer",
+    "format": "int32"
+    },
+    "applicationId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "days": {
+    "$ref": "#/components/schemas/GroupDays"
+    },
+    "daysAsText": {
+    "type": "string",
+    "nullable": true
+    },
+    "startTime": {
+    "type": "string",
+    "format": "time"
+    },
+    "endTime": {
+    "type": "string",
+    "format": "time"
+    },
+    "students": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/StudentDto"
+    },
+    "nullable": true
+    },
+    "sessions": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/SessionDto"
+    },
+    "nullable": true
+    },
+    "daysArray": {
+    "type": "array",
+    "items": {
+    "type": "integer",
+    "format": "int32"
+    },
+    "nullable": true,
+    "readOnly": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "GroupDtoPaginationResult": {
+    "type": "object",
+    "properties": {
+    "data": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/GroupDto"
+    },
+    "nullable": true
+    },
+    "total": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "InstructorDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "email": {
+    "type": "string",
+    "nullable": true
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    },
+    "phone": {
+    "type": "string",
+    "nullable": true
+    },
+    "address": {
+    "type": "string",
+    "nullable": true
+    },
+    "nationalId": {
+    "type": "string",
+    "nullable": true
+    },
+    "cityName": {
+    "type": "string",
+    "nullable": true
+    },
+    "cityId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "salary": {
+    "type": "number",
+    "format": "double"
+    },
+    "salaryTypeId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "salaryTypeName": {
+    "type": "string",
+    "nullable": true
+    },
+    "coursesNames": {
+    "type": "array",
+    "items": {
+    "type": "string"
+    },
+    "nullable": true
+    },
+    "coursesIds": {
+    "type": "array",
+    "items": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "InstructorDtoPaginationResult": {
+    "type": "object",
+    "properties": {
+    "data": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/InstructorDto"
+    },
+    "nullable": true
+    },
+    "total": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "LeadDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    },
+    "email": {
+    "type": "string",
+    "nullable": true
+    },
+    "phone": {
+    "type": "string",
+    "nullable": true
+    },
+    "address": {
+    "type": "string",
+    "nullable": true
+    },
+    "areaId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "birthdate": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "educationalQualificationDescriptionId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "educationalQualificationTypeId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "educationalQualificationIssuerId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "studentSourceId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "studentId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "referenceId": {
+    "type": "string",
+    "format": "uuid"
+    },
+    "campaignId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "status": {
+    "type": "string",
+    "nullable": true
+    },
+    "createdAt": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "courseId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "courseName": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "LeadDtoPaginationResult": {
+    "type": "object",
+    "properties": {
+    "data": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/LeadDto"
+    },
+    "nullable": true
+    },
+    "total": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "LevelDto": {
+    "required": [
+    "applicationId"
+    ],
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    },
+    "description": {
+    "type": "string",
+    "nullable": true
+    },
+    "sessionsDiortion": {
+    "type": "number",
+    "format": "float"
+    },
+    "price": {
+    "type": "number",
+    "format": "double"
+    },
+    "applicationId": {
+    "type": "string",
+    "nullable": true
+    },
+    "sessionsCount": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    "additionalProperties": false
+    },
+    "LevelDtoPaginationResult": {
+    "type": "object",
+    "properties": {
+    "data": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/LevelDto"
+    },
+    "nullable": true
+    },
+    "total": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "LoginRequestDto": {
+    "type": "object",
+    "properties": {
+    "userNameOrEmail": {
+    "type": "string",
+    "nullable": true
+    },
+    "password": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "LoginResponseDto": {
+    "type": "object",
+    "properties": {
+    "accessToken": {
+    "type": "string",
+    "nullable": true
+    },
+    "refreshToken": {
+    "type": "string",
+    "nullable": true
+    },
+    "accessTokenExpires": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "refreshTokenExpires": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "userId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "userName": {
+    "type": "string",
+    "nullable": true
+    },
+    "roles": {
+    "type": "array",
+    "items": {
+    "type": "string"
+    },
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "MessageTemplateDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "createdAt": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "updatedAt": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "deletedAt": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "courseId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "courseName": {
+    "type": "string",
+    "nullable": true
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    },
+    "sendAutomatically": {
+    "type": "boolean"
+    },
+    "body": {
+    "type": "string",
+    "nullable": true
+    },
+    "trigger": {
+    "$ref": "#/components/schemas/StudentFlowStep"
+    }
+    },
+    "additionalProperties": false
+    },
+    "MessageTemplateDtoPaginationResult": {
+    "type": "object",
+    "properties": {
+    "data": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/MessageTemplateDto"
+    },
+    "nullable": true
+    },
+    "total": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "PayEnrollmentDto": {
+    "required": [
+    "amount",
+    "enrollmentId"
+    ],
+    "type": "object",
+    "properties": {
+    "enrollmentId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "amount": {
+    "minimum": 0.01,
+    "type": "number",
+    "format": "double"
+    },
+    "description": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "PermissionDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "code": {
+    "type": "string",
+    "nullable": true
+    },
+    "description": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "RefreshTokenRequestDto": {
+    "type": "object",
+    "properties": {
+    "refreshToken": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "RegisterLeadDto": {
+    "required": [
+    "name"
+    ],
+    "type": "object",
+    "properties": {
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string"
+    },
+    "email": {
+    "type": "string",
+    "nullable": true
+    },
+    "phone": {
+    "maxLength": 50,
+    "minLength": 0,
+    "type": "string",
+    "format": "tel",
+    "nullable": true
+    },
+    "address": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "branchId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "birthdate": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "courseId": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "RoleDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    },
+    "description": {
+    "type": "string",
+    "nullable": true
+    },
+    "usersCount": {
+    "type": "integer",
+    "format": "int32"
+    },
+    "createdAt": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "updatedAt": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "permissions": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/PermissionDto"
+    },
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "RoleDtoPaginationResult": {
+    "type": "object",
+    "properties": {
+    "data": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/RoleDto"
+    },
+    "nullable": true
+    },
+    "total": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "RoomDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    },
+    "type": {
+    "$ref": "#/components/schemas/RoomType"
+    },
+    "capacity": {
+    "type": "integer",
+    "format": "int32"
+    },
+    "branchId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "branchName": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "RoomDtoPaginationResult": {
+    "type": "object",
+    "properties": {
+    "data": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/RoomDto"
+    },
+    "nullable": true
+    },
+    "total": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "RoomType": {
+    "enum": [
+    "معمل",
+    "قاعة"
+    ],
+    "type": "string"
+    },
+    "SessionDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "roomId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "roomName": {
+    "type": "string",
+    "nullable": true
+    },
+    "instructorId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "instructorName": {
+    "type": "string",
+    "nullable": true
+    },
+    "startTime": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "sessionIndex": {
+    "type": "integer",
+    "format": "int32"
+    },
+    "courseId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "courseName": {
+    "type": "string",
+    "nullable": true
+    },
+    "studentsAbsent": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/SessionStudentDto"
+    },
+    "nullable": true
+    },
+    "groupId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "groupName": {
+    "type": "string",
+    "nullable": true
+    },
+    "notes": {
+    "type": "string",
+    "nullable": true
+    },
+    "groupStudents": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/StudentDto"
+    },
+    "nullable": true
+    },
+    "isLastSession": {
+    "type": "boolean"
+    }
+    },
+    "additionalProperties": false
+    },
+    "SessionDtoPaginationResult": {
+    "type": "object",
+    "properties": {
+    "data": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/SessionDto"
+    },
+    "nullable": true
+    },
+    "total": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "SessionStudentDto": {
+    "required": [
+    "studentId"
+    ],
+    "type": "object",
+    "properties": {
+    "studentId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "studentName": {
+    "type": "string",
+    "nullable": true
+    },
+    "studentPhone": {
+    "type": "string",
+    "nullable": true
+    },
+    "isPresent": {
+    "type": "boolean"
+    },
+    "notes": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "StudentDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    },
+    "email": {
+    "type": "string",
+    "nullable": true
+    },
+    "phone": {
+    "type": "string",
+    "nullable": true
+    },
+    "address": {
+    "type": "string",
+    "nullable": true
+    },
+    "areaId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "birthdate": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "applicationId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "educationalQualificationDescriptionId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "educationalQualificationTypeId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "educationalQualificationIssuerId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "sourceId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "sourceName": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "StudentDtoPaginationResult": {
+    "type": "object",
+    "properties": {
+    "data": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/StudentDto"
+    },
+    "nullable": true
+    },
+    "total": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "StudentFlowStep": {
+    "enum": [
+    "LeadRegistration",
+    "StudentAddedToGroup",
+    "StudentMarkedAsAbsent",
+    "SessionCancelled",
+    "SessionPostponed",
+    "StudentBirthday"
+    ],
+    "type": "string"
+    },
+    "StudentSourceDto": {
+    "required": [
+    "name"
+    ],
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "StudentSourceDtoPaginationResult": {
+    "type": "object",
+    "properties": {
+    "data": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/StudentSourceDto"
+    },
+    "nullable": true
+    },
+    "total": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateAreaDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    },
+    "cityId": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateBranchDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "address": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "areaId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateCampaignDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "description": {
+    "maxLength": 1000,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "startDate": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "endDate": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "leads": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/UpdateLeadDto"
+    },
+    "nullable": true
+    },
+    "branchIds": {
+    "type": "array",
+    "items": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "nullable": true
+    },
+    "coursesIds": {
+    "type": "array",
+    "items": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateCategoryDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "description": {
+    "maxLength": 1000,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateCityDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateCourseDto": {
+    "required": [
+    "levels"
+    ],
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "description": {
+    "maxLength": 1000,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "isActive": {
+    "type": "boolean",
+    "nullable": true
+    },
+    "categoryId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "levels": {
+    "minItems": 1,
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/UpdateLevelDto"
+    }
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateEducationalQualificationDescriptionDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "maxLength": 100,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateEducationalQualificationIssuerDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "maxLength": 100,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateEducationalQualificationTypeDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "maxLength": 100,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateEmployeeDto": {
+    "required": [
+    "id"
+    ],
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "phone": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "address": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "nationalId": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "cityId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "department": {
+    "type": "string",
+    "nullable": true
+    },
+    "salary": {
+    "type": "number",
+    "format": "double",
+    "nullable": true
+    },
+    "salaryTypeId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "jobTitle": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateGroupDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "startDate": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "endDate": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "startTime": {
+    "type": "string",
+    "format": "time"
+    },
+    "endTime": {
+    "type": "string",
+    "format": "time",
+    "nullable": true
+    },
+    "instructorId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "levelId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "roomId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "statusId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "studentIds": {
+    "type": "array",
+    "items": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "nullable": true
+    },
+    "days": {
+    "type": "array",
+    "items": {
+    "type": "integer",
+    "format": "int32"
+    },
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateInstructorDto": {
+    "required": [
+    "id"
+    ],
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "phone": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "address": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "nationalId": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "cityId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "salary": {
+    "type": "number",
+    "format": "double",
+    "nullable": true
+    },
+    "salaryTypeId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "coursesIds": {
+    "type": "array",
+    "items": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateLeadDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "email": {
+    "type": "string",
+    "nullable": true
+    },
+    "phone": {
+    "maxLength": 50,
+    "minLength": 0,
+    "type": "string",
+    "format": "tel",
+    "nullable": true
+    },
+    "address": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "areaId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "birthdate": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "educationalQualificationDescriptionId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "educationalQualificationTypeId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "educationalQualificationIssuerId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "studentSourceId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "studentId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "campaignId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "status": {
+    "type": "string",
+    "nullable": true
+    },
+    "courseId": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateLevelDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "description": {
+    "maxLength": 1000,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "sessionsDiortion": {
+    "type": "number",
+    "format": "float"
+    },
+    "price": {
+    "type": "number",
+    "format": "double"
+    },
+    "sessionsCount": {
+    "type": "integer",
+    "format": "int32"
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateMessageTemplateDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "courseId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    },
+    "sendAutomatically": {
+    "type": "boolean",
+    "nullable": true
+    },
+    "body": {
+    "type": "string",
+    "nullable": true
+    },
+    "trigger": {
+    "$ref": "#/components/schemas/StudentFlowStep"
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateRoleDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    },
+    "description": {
+    "type": "string",
+    "nullable": true
+    },
+    "permissionIds": {
+    "type": "array",
+    "items": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateRoomDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "type": {
+    "$ref": "#/components/schemas/RoomType"
+    },
+    "capacity": {
+    "maximum": 2147483647,
+    "minimum": 1,
+    "type": "integer",
+    "format": "int32",
+    "nullable": true
+    },
+    "branchId": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateSessionDto": {
+    "required": [
+    "groupId",
+    "id"
+    ],
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "roomId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "instructorId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "startTime": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "sessionStudents": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/UpdateSessionStudentDto"
+    },
+    "nullable": true
+    },
+    "groupId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "notes": {
+    "type": "string",
+    "nullable": true
+    },
+    "isCancelled": {
+    "type": "boolean",
+    "nullable": true,
+    "readOnly": true
+    },
+    "isPostponed": {
+    "type": "boolean",
+    "nullable": true,
+    "readOnly": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateSessionStudentDto": {
+    "required": [
+    "id"
+    ],
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "studentId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "isPresent": {
+    "type": "boolean"
+    },
+    "notes": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateStudentDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "email": {
+    "type": "string",
+    "nullable": true
+    },
+    "phone": {
+    "maxLength": 50,
+    "minLength": 0,
+    "type": "string",
+    "format": "tel",
+    "nullable": true
+    },
+    "address": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "areaId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "birthdate": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "educationalQualificationDescriptionId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "educationalQualificationTypeId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "educationalQualificationIssuerId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "studentSourceId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateStudentSourceDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "maxLength": 100,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "UpdateUserDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "email": {
+    "maxLength": 255,
+    "minLength": 0,
+    "type": "string",
+    "format": "email",
+    "nullable": true
+    },
+    "salaryTypeId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "salary": {
+    "type": "number",
+    "format": "double"
+    },
+    "image": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "phone": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "address": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "nationalId": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "cityId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "education": {
+    "maxLength": 500,
+    "minLength": 0,
+    "type": "string",
+    "nullable": true
+    },
+    "roleIds": {
+    "type": "array",
+    "items": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "UserDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "name": {
+    "type": "string",
+    "nullable": true
+    },
+    "email": {
+    "type": "string",
+    "nullable": true
+    },
+    "emailVerified": {
+    "type": "string",
+    "format": "date-time",
+    "nullable": true
+    },
+    "image": {
+    "type": "string",
+    "nullable": true
+    },
+    "salaryTypeId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "salaryTypeName": {
+    "type": "string",
+    "nullable": true
+    },
+    "salary": {
+    "type": "number",
+    "format": "double"
+    },
+    "phone": {
+    "type": "string",
+    "nullable": true
+    },
+    "address": {
+    "type": "string",
+    "nullable": true
+    },
+    "nationalId": {
+    "type": "string",
+    "nullable": true
+    },
+    "cityId": {
+    "type": "integer",
+    "format": "int64",
+    "nullable": true
+    },
+    "education": {
+    "type": "string",
+    "nullable": true
+    },
+    "roleIds": {
+    "type": "array",
+    "items": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "UserDtoPaginationResult": {
+    "type": "object",
+    "properties": {
+    "data": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/UserDto"
+    },
+    "nullable": true
+    },
+    "total": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    "additionalProperties": false
+    }
+    },
+    "securitySchemes": {
+    "Bearer": {
+    "type": "http",
+    "description": "ضع فقط التوكن (Bearer Token) هنا بدون كلمة Bearer. مثال: eyJhbGci...",
+    "scheme": "Bearer",
+    "bearerFormat": "JWT"
+    }
+    }
+    },
+    "security": [
+    {
+    "Bearer": []
+    }
+    ]
+    }

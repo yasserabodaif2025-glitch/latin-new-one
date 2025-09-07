@@ -1,0 +1,27 @@
+---
+description: this rules is very helpfull every time you commit or create pull requst
+globs: 
+alwaysApply: false
+---
+# Slack Notification Guidelines
+
+## Notification Triggers
+- Send a Slack notification to the #latin-acadmey channel for every project update, commit, or pull request.
+- Use @channel or @here to ensure all members are notified for important updates.
+
+## Notification Content
+- Include clear, meaningful descriptions of the update, commit, or PR.
+- Provide links to the relevant commit, PR, or resource when possible.
+- Use concise, human-readable language.
+
+## Notification Timing
+- Send notifications immediately after the event occurs.
+
+## Clean Communication
+- Avoid unnecessary or duplicate notifications.
+- Group related updates into a single notification when appropriate.
+- Use consistent formatting for all messages.
+
+## Respect Channel Purpose
+- Only send project-related updates to #latin-acadmey.
+- Avoid off-topic or personal messages in the notification flow.

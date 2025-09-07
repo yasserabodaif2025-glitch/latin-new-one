@@ -1,0 +1,72 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# latin-academy-project-rules
+
+## Project Structure & Organization
+- Use the Next.js App Router structure (`/src/app`).
+- Group reusable UI components under `/src/components`, with further subfolders for UI, layout, interface, table, and dashboard components.
+- Place utility functions and configurations in `/src/lib` (with subfolders for hooks, schema, const).
+- Keep all resource schemas organized in `src/lib/schema`.
+- Use a `(components)` subfolder inside each resource folder for resource-specific components.
+- Export all components and interfaces via a single `index.ts` for easy import.
+
+## Naming & Conventions
+- Use lowercase with dashes for directories (e.g., `components/auth-wizard`).
+- Use meaningful, descriptive names for variables, functions, and files.
+- Avoid abbreviations unless universally understood.
+
+## TypeScript & Validation
+- Use TypeScript interfaces/types for all data shapes and props.
+- Infer types from Zod schemas for strong type safety and DRY code.
+- Use Zod for schema validation, specifying required/optional fields and business rules.
+
+## React & Next.js Patterns
+- Use functional components and hooks for logic.
+- Separate server and client components as per Next.js 15 conventions.
+- Use translation hooks for labels and messages (with `next-intl`).
+- Use React Hook Form with Zod for form handling and validation.
+- Use SWR for data fetching and state management.
+- Use axios for HTTP requests, with interceptors for auth.
+
+## UI & Styling
+- Use Tailwind CSS for all styling.
+- Use Shadcn UI components (built on Radix primitives) for UI elements.
+- Ensure all components and pages are accessible (WCAG guidelines).
+- Support responsive design for mobile and desktop.
+- Use `class-variance-authority` and `tailwind-merge` for conditional class names.
+
+## Clean Code Principles
+- Single responsibility: Each function/component should do one thing.
+- DRY: Extract repeated code into reusable functions/components.
+- Encapsulation: Hide implementation details, expose clear interfaces.
+- Refactor continuously and fix technical debt early.
+- Leave code cleaner than you found it.
+
+## API & Data Patterns
+- Use RESTful API endpoints with standard CRUD operations.
+- Support pagination and soft delete/restore.
+- Implement all CRUD operations as async server actions using axios.
+- Return typed data from server actions, using interfaces for type safety.
+- Use custom hooks for data fetching, with loading state handling.
+
+## Internationalization
+- Support English and Arabic locales, with Arabic as the default.
+- Use `next-intl` for translation management.
+- Use middleware-based locale routing.
+
+## Authentication
+- Use cookie-based authentication with token and refreshToken.
+- Use axios interceptors for adding auth headers and handling 401 responses.
+- Redirect to login page on auth failures.
+
+## Testing & Quality
+- Write tests before fixing bugs.
+- Keep tests readable and maintainable.
+- Test edge cases and error conditions.
+
+## Performance & Optimization
+- Use code splitting, lazy loading, and parallel data fetching where appropriate.
+- Utilize Next.js built-in caching and revalidation features.

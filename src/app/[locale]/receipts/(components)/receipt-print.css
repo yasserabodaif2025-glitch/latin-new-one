@@ -1,0 +1,22 @@
+/* أنماط الطباعة للإيصال */
+@media print {
+  .print-hidden {
+    display: none !important;
+  }
+  
+  .receipt-print {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 12px;
+    line-height: 1.4;
+    box-shadow: none;
+    border: none;
+  }
+  
+  @page {
+    size: A5;
+    margin: 10mm;
+  }
+}

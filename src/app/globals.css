@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-cairo: 'Cairo', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+body {
+  font-family: var(--font-cairo);
+}
+
+@layer base {
+  :root {
+    /* Light theme color tokens (H S% L%) */
+    --background: 230 100% 98%;
+    /* #F8FAFF */
+    --foreground: 224 23% 8%;
+    /* #0F172A */
+    --card: 0 0% 100%;
+    /* white */
+    --card-foreground: 224 23% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 23% 8%;
+    --primary: 221 83% 53%;
+    /* #2563EB */
+    --primary-foreground: 0 0% 100%;
+    /* white */
+    --secondary: 220 15% 95%;
+    /* subtle light */
+    --secondary-foreground: 224 23% 8%;
+    --muted: 220 12% 96%;
+    --muted-foreground: 220 8% 55%;
+    --accent: 189 90% 42%;
+    /* #06B6D4 */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 69% 52%;
+    /* #DC2626 */
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 12% 90%;
+    --input: 220 12% 96%;
+    --ring: 221 83% 60%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --colors-dark-50: #f8fafc;
+    --colors-dark-100: #f1f5f9;
+    --colors-dark-200: #e2e8f0;
+    --colors-dark-300: #cbd5e1;
+    --colors-dark-400: #94a3b8;
+    --colors-dark-500: #64748b;
+    --colors-dark-600: #475569;
+    --colors-dark-700: #334155;
+    --colors-dark-800: #1e293b;
+    --colors-dark-850: #161c30;
+    --colors-dark-900: #0f172a;
+    --colors-dark-950: #020617;
+    --colors-dark-50-rgb: 248, 250, 252;
+    --colors-dark-100-rgb: 241, 245, 249;
+    --colors-dark-200-rgb: 226, 232, 240;
+    --colors-dark-300-rgb: 203, 213, 225;
+    --colors-dark-400-rgb: 148, 163, 184;
+    --colors-dark-500-rgb: 100, 116, 139;
+    --colors-dark-600-rgb: 71, 85, 105;
+    --colors-dark-700-rgb: 51, 65, 85;
+    --colors-dark-800-rgb: 30, 41, 59;
+    --colors-dark-850-rgb: 22, 28, 48;
+    --colors-dark-900-rgb: 15, 23, 42;
+    --colors-dark-950-rgb: 2, 6, 23;
+  }
+
+  .dark {
+    /* Dark theme tokens */
+    --background: 222 55% 18%;
+    /* lighter deep navy */
+    --foreground: 0 0% 100%;
+    /* white */
+    --card: 222 45% 20%;
+    --card-foreground: 0 0% 100%;
+    --popover: 222 45% 20%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 221 83% 65%;
+    /* primary for accents on dark */
+    --primary-foreground: 224 23% 8%;
+    --secondary: 222 35% 24%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 222 35% 24%;
+    --muted-foreground: 220 10% 78%;
+    --accent: 221 83% 36%;
+    /* lighter blue for hover/selected */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 69% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 222 30% 28%;
+    --input: 222 30% 26%;
+    --ring: 221 83% 60%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Accessibility and polish */
+@layer base {
+
+  /* Smooth scroll for in-page navigation */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Clear, consistent focus ring */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+}
+
+/* Themed scrollbar styling (WebKit/Chromium/Edge) */
+/* Falls back gracefully elsewhere */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: hsl(var(--muted));
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--border));
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.dark *::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--secondary));
+}
