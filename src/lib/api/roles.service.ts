@@ -15,6 +15,7 @@ export interface Role {
   createdAt: string
   updatedAt: string
   permissions: Permission[] | null
+  isActive: boolean
 }
 
 export interface RolePaginationResult {
