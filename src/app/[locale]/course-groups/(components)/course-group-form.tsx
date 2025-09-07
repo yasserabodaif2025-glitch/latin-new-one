@@ -53,7 +53,7 @@ export const CourseGroupForm = ({ mode = formMode.create, data }: Props) => {
     endHour: 5.3,
     intervalMinutes: 30,
   })
-  const t = useTranslations('courseGroup')
+  const t = useTranslations('courseGroup') as any
   const [maxStudents, setMaxStudents] = useState(100)
   const courses = useCourses()
   const selectedBranchId = useSelectedBranch()

@@ -12,7 +12,23 @@ const config: NextConfig = {
     // If you relied on modularized imports or package optimizations,
     // consider adding a babel plugin or a dedicated build-time transform.
   },
-  webpack: (config) => {
+  webpack: (config, { isServer }) => {
+    // Fix for "self is not defined" error during SSR
+    if (isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        net: false,
+        tls: false,
+      }
+      
+      // Add alias to handle self references
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        'self': false,
+      }
+    }
+
     // Code splitting optimization
     config.optimization = {
       ...config.optimization,

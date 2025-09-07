@@ -40,7 +40,7 @@ type Props = {
 
 export const CourseForm = ({ mode = formMode.create, data }: Props) => {
   const t = useTranslations('course')
-  const categories = useCategories()
+  const { categories } = useCategories()
   const router = useRouter()
   const defaultValues: CourseSchema = {
     id: data?.id ? data.id : undefined,

@@ -25,7 +25,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Switch } from '@/components/ui/switch';
-import { Role, rolesService } from '@/lib/api/roles.service';
+import { Role, rolesService, CreateRoleDto, UpdateRoleDto } from '@/lib/api/roles.service';
 import { toast } from '@/components/ui/use-toast';
 
 const roleFormSchema = z.object({
@@ -46,7 +46,7 @@ interface RoleFormProps {
 }
 
 export function RoleForm({ open, onOpenChange, onSuccess, role }: RoleFormProps) {
-  const t = useTranslations('roles');
+  const t = useTranslations('roles') as any;
   const [loading, setLoading] = useState(false);
 
   const form = useForm<RoleFormValues>({
@@ -80,10 +80,18 @@ export function RoleForm({ open, onOpenChange, onSuccess, role }: RoleFormProps)
       
       if (role) {
         // Update existing role
-        await rolesService.updateRole(role.id, data);
+        const payload: UpdateRoleDto = {
+          name: data.name,
+          description: data.description ?? null,
+        };
+        await rolesService.updateRole(role.id, payload);
       } else {
         // Create new role
-        await rolesService.createRole(data);
+        const payload: CreateRoleDto = {
+          name: data.name,
+          description: data.description ?? null,
+        };
+        await rolesService.createRole(payload);
       }
       
       onSuccess();

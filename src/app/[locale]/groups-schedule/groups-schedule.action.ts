@@ -42,7 +42,7 @@ export async function getActiveGroups(filters?: {
     
     console.log('✅ getActiveGroups: نجح الحصول على المجموعات النشطة', {
       count: res.data?.data?.length || 0,
-      totalCount: res.data?.totalCount || 0
+      total: res.data?.total || 0
     })
     
     return res.data as IResponse<IGroupScheduleItem[]>

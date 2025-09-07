@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { groupsService, GroupSummaryFilters, GroupSummaryResponse, GroupStatistics } from '../api/groups.service';
+import { GroupSummaryResponse, GroupStatistics } from '../api/groups.service';
 import { DateRange } from 'react-day-picker';
 
 interface UseTrainingManagementReturn {
@@ -111,6 +111,32 @@ export function useTrainingManagement(): UseTrainingManagementReturn {
     }
   }, []);
 
+  const calculateStatistics = useCallback((groupsData: GroupSummaryResponse[]) => {
+    const totalGroups = groupsData.length;
+    const activeGroups = groupsData.filter(g => 
+      g.statusName?.toLowerCase().includes('نشط') || 
+      g.statusName?.toLowerCase().includes('active')
+    ).length;
+    
+    const completedGroups = groupsData.filter(g => 
+      g.statusName?.toLowerCase().includes('مكتمل') || 
+      g.statusName?.toLowerCase().includes('completed')
+    ).length;
+    
+    const totalStudents = groupsData.reduce((sum, g) => sum + g.studentsCount, 0);
+    const averageProgress = groupsData.length > 0 
+      ? Math.round(groupsData.reduce((sum, g) => sum + g.progress, 0) / groupsData.length)
+      : 0;
+
+    setStatistics({
+      totalGroups,
+      activeGroups,
+      completedGroups,
+      totalStudents,
+      averageProgress
+    });
+  }, []);
+
   const applyFilters = useCallback(() => {
     let filtered = [...groups];
 
@@ -145,33 +171,7 @@ export function useTrainingManagement(): UseTrainingManagementReturn {
 
     setFilteredGroups(filtered);
     calculateStatistics(filtered);
-  }, [groups, dateRange, selectedStatus, selectedInstructor, searchTerm]);
-
-  const calculateStatistics = useCallback((groupsData: GroupSummaryResponse[]) => {
-    const totalGroups = groupsData.length;
-    const activeGroups = groupsData.filter(g => 
-      g.statusName?.toLowerCase().includes('نشط') || 
-      g.statusName?.toLowerCase().includes('active')
-    ).length;
-    
-    const completedGroups = groupsData.filter(g => 
-      g.statusName?.toLowerCase().includes('مكتمل') || 
-      g.statusName?.toLowerCase().includes('completed')
-    ).length;
-    
-    const totalStudents = groupsData.reduce((sum, g) => sum + g.studentsCount, 0);
-    const averageProgress = groupsData.length > 0 
-      ? Math.round(groupsData.reduce((sum, g) => sum + g.progress, 0) / groupsData.length)
-      : 0;
-
-    setStatistics({
-      totalGroups,
-      activeGroups,
-      completedGroups,
-      totalStudents,
-      averageProgress
-    });
-  }, []);
+  }, [groups, dateRange, selectedStatus, selectedInstructor, searchTerm, calculateStatistics]);
 
   const clearFilters = useCallback(() => {
     setDateRange(undefined);

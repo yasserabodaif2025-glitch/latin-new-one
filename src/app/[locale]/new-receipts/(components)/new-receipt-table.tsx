@@ -84,7 +84,7 @@ export function NewReceiptTable({ initialReceipts = [] }: NewReceiptTableProps) 
           title="الإيصالات الجديدة"
           data={receipts}
           columns={columns}
-          mainRoute={routes.newReceipts}
+          mainRoute={routes.receipts}
           hideHeaders
         />
       )}

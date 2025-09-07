@@ -43,8 +43,8 @@ export const LectureForm = ({ mode = formMode.create, data }: Props) => {
   console.log({ data })
   const locale = useLocale()
   const t = useTranslations('lecture')
-  const groups = useCourseGroup()
-  const lecturers = useLecturers()
+  const { courseGroups } = useCourseGroup()
+  const { lecturers } = useLecturers()
   const { labs } = useLabs()
   const [selected, setSelected] = React.useState<Record<number, boolean>>(
     Object.fromEntries(data?.students?.map((student) => [student.studentId, false]) ?? [])
@@ -94,11 +94,11 @@ export const LectureForm = ({ mode = formMode.create, data }: Props) => {
         })
       }
     })
-  }, [selected])
+  }, [selected, fields, update])
 
   // useEffect(() => {
-  //   if (data?.groupId && groups) {
-  //     const selectedGroup = groups?.find((group) => group.id + '' === data.groupId + '')
+  //   if (data?.groupId && courseGroups) {
+  //     const selectedGroup = courseGroups?.find((group) => group.id + '' === data.groupId + '')
   //     const groupStudents =
   //       selectedGroup?.students.map((student) => {
   //         return { id: student.id + '', name: student.name, phone: student.phone }
@@ -115,7 +115,7 @@ export const LectureForm = ({ mode = formMode.create, data }: Props) => {
   //       }))
   //     )
   //   }
-  // }, [data?.groupId, groups, append])
+  // }, [data?.groupId, courseGroups, append])
 
   const onSubmit = async (values: LectureSchema) => {
     try {
@@ -202,7 +202,7 @@ export const LectureForm = ({ mode = formMode.create, data }: Props) => {
                     disabled
                     value={field.value + ''}
                     onValueChange={(e) => {
-                      const selectedGroup = groups?.find((group) => group.id + '' === e + '')
+                      const selectedGroup = courseGroups?.find((group) => group.id + '' === e + '')
                       const groupStudents =
                         selectedGroup?.students.map((student) => {
                           return { id: student.id + '', name: student.name, phone: student.phone }
@@ -227,7 +227,7 @@ export const LectureForm = ({ mode = formMode.create, data }: Props) => {
                     </SelectTrigger>
                     <SelectContent>
                       <SelectGroup>
-                        {groups?.map((group) => (
+                        {courseGroups?.map((group) => (
                           <SelectItem key={group.id} value={group.id + ''}>
                             {group.name}
                           </SelectItem>

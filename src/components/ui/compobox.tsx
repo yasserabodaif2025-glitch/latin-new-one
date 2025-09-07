@@ -57,7 +57,7 @@ export function Combobox({
                   key={item.value}
                   value={item.value}
                   className="w-full"
-                  onSelect={(currentValue) => {
+                  onSelect={(currentValue: string) => {
                     // setValue(currentValue ==s= value ? '' : currentValue)
                     onSelect?.(currentValue)
                     setOpen(false)

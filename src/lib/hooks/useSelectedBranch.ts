@@ -59,7 +59,7 @@ export const useSelectedBranch = () => {
       window.removeEventListener('storage', handleStorageChange)
       window.removeEventListener('branchChanged', handleBranchChange)
     }
-  }, [])
+  }, [selectedBranchId])
 
   return selectedBranchId
 }

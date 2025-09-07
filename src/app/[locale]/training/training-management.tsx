@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/select'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Calendar, Users, Clock, Filter, Search, AlertCircle, Eye, BarChart3 } from 'lucide-react'
+import { Users, Clock, Filter, Search, AlertCircle, Eye, BarChart3 } from 'lucide-react'
 import { DatePickerWithRange } from '@/components/ui/date-picker-with-range'
 import { useTrainingManagement } from '@/lib/hooks/useTrainingManagement'
 import { GroupDetailsModal, TrainingStatistics } from '@/components/training'
@@ -190,7 +190,7 @@ export default function TrainingManagement() {
                 {/* Date Range Filter */}
                 <div>
                   <label className="mb-2 block text-sm font-medium">الفترة الزمنية</label>
-                  <DatePickerWithRange date={dateRange} onDateChange={setDateRange} />
+                  <DatePickerWithRange date={dateRange} handleSelect={setDateRange} />
                 </div>
 
                 {/* Status Filter */}

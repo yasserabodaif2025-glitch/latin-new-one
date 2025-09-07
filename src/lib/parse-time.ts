@@ -7,7 +7,7 @@ export function parseTime(timeString: string): string {
     throw new Error("Invalid time format. Expected format: 'hh:mm am/pm'")
   }
 
-  const [_, hoursStr, minutesStr, period] = match
+  const [, hoursStr, minutesStr, period] = match
   let hours = parseInt(hoursStr, 10)
   const minutes = parseInt(minutesStr, 10)
 

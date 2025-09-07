@@ -10,7 +10,6 @@ import { toast } from 'sonner'
 import { axiosInstance } from '@/lib/axiosInstance'
 import useSWR from 'swr'
 import { axiosFetcher } from '@/lib/swr-fetchers'
-import { useTranslations } from 'next-intl'
 
 interface Role {
   id: number
@@ -36,7 +35,7 @@ export function RoleAssignmentModal({
   const [isUpdating, setIsUpdating] = useState(false)
 
   // جلب جميع الأدوار المتاحة
-  const { data: roles = [] as Role[], error: rolesError } = useSWR('/api/Roles', axiosFetcher)
+  const { data: roles = [] as Role[], error: rolesError } = useSWR<Role[]>('/api/Roles', axiosFetcher)
 
   useEffect(() => {
     if (rolesError) {

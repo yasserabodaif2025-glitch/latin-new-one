@@ -35,7 +35,28 @@ export interface GroupStatistics {
   averageProgress: number;
 }
 
-class GroupsService extends AbstractApi {
+export interface Group {
+  id: number;
+  name: string;
+  startDate: string | null;
+  endDate: string | null;
+  instructorId: number;
+  statusId: number;
+  courseName: string;
+  price: number;
+}
+
+export interface CreateGroupData {
+  name: string;
+  startDate?: string;
+  endDate?: string;
+  instructorId: number;
+  statusId: number;
+  courseName: string;
+  price?: number;
+}
+
+class GroupsService extends AbstractApi<Group, CreateGroupData> {
   constructor() {
     super('/api/Groups');
   }

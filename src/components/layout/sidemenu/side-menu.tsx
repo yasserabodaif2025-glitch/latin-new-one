@@ -143,7 +143,7 @@ export const SideMenu = ({ showOnlyIcons = false }: SideMenuProps) => {
         { href: `/${routes.lecturers}`, label: t('lecturers'), icon: GraduationCap },
         { href: `/${routes.employees}`, label: t('employees'), icon: UserRound },
         { href: `/admin/${routes.roles}`, label: t('roles'), icon: ShieldCheck },
-        { href: `/${routes.treasuries}`, label: t('treasuries'), icon: Building2 },
+        { href: `/${routes.receipts}`, label: t('treasuries'), icon: Building2 },
       ],
     },
     {

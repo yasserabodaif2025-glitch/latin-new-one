@@ -3,7 +3,7 @@ import { apis } from './const/api.enum'
 
 export abstract class AbstractApi<T, S> {
   protected readonly api: string
-  constructor(api: apis) {
+  constructor(api: apis | string) {
     this.api = api
   }
 
@@ -29,6 +29,18 @@ export abstract class AbstractApi<T, S> {
 
   async restore(id: number) {
     return (await axiosInstance.put(this.api + apis.restore + id)).data as T
+  }
+
+  protected async get(endpoint: string) {
+    return (await axiosInstance.get(`${this.api}${endpoint}`)).data
+  }
+
+  protected async post(endpoint: string, data?: any) {
+    return (await axiosInstance.post(`${this.api}${endpoint}`, data)).data
+  }
+
+  protected async put(endpoint: string, data?: any) {
+    return (await axiosInstance.put(`${this.api}${endpoint}`, data)).data
   }
 }
 

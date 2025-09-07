@@ -10,14 +10,15 @@ interface StudentFinancialDetails {
   phone?: string
   balances?: any
   serviceCharges?: any[]
-  totalBalance?: number
-  totalOwed?: number
+  totalBalance: number
+  totalOwed: number
   status: 'success' | 'error'
   error?: string
 }
 
 async function fetchWithAuth(url: string, options: RequestInit = {}) {
-  const token = cookies().get('token')?.value
+  const cookieStore = await cookies()
+  const token = cookieStore.get('token')?.value
   
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',

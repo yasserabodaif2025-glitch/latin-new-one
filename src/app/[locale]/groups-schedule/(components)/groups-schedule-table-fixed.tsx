@@ -79,7 +79,7 @@ export function GroupsScheduleTable({ initialGroups = [] }: GroupsScheduleTableP
       console.log('📊 Groups response:', {
         success: !!groupsRes,
         dataLength: groupsRes?.data?.length || 0,
-        totalCount: groupsRes?.totalCount || 0,
+        total: groupsRes?.total || 0,
         firstGroup: groupsRes?.data?.[0]
       })
       
