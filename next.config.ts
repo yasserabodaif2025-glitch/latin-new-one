@@ -6,7 +6,6 @@ const withNextIntl = createNextIntlPlugin()
 /** @type {import('next').NextConfig} */
 const config: NextConfig = {
   experimental: {
-    reactCompiler: true,
     optimizeCss: true,
     // Note: removed `swcMinify` and `modularizeImports` which are not
     // valid under `experimental` for this Next.js version.
