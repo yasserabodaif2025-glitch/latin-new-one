@@ -7,7 +7,8 @@ async function forwardRequest(req: Request, params: { path: string[] }) {
     return new Response('API_URL not configured', { status: 500 })
   }
 
-  const token = cookies().get('token')?.value
+  const cookieStore = await cookies()
+  const token = cookieStore.get('token')?.value
 
   const url = new URL(req.url)
   const query = url.search || ''
@@ -50,18 +51,23 @@ async function forwardRequest(req: Request, params: { path: string[] }) {
   })
 }
 
-export async function GET(req: Request, { params }: { params: { path: string[] } }) {
-  return forwardRequest(req, params)
+export async function GET(req: Request, { params }: { params: Promise<{ path: string[] }> }) {
+  const resolvedParams = await params
+  return forwardRequest(req, resolvedParams)
 }
-export async function POST(req: Request, { params }: { params: { path: string[] } }) {
-  return forwardRequest(req, params)
+export async function POST(req: Request, { params }: { params: Promise<{ path: string[] }> }) {
+  const resolvedParams = await params
+  return forwardRequest(req, resolvedParams)
 }
-export async function PUT(req: Request, { params }: { params: { path: string[] } }) {
-  return forwardRequest(req, params)
+export async function PUT(req: Request, { params }: { params: Promise<{ path: string[] }> }) {
+  const resolvedParams = await params
+  return forwardRequest(req, resolvedParams)
 }
-export async function DELETE(req: Request, { params }: { params: { path: string[] } }) {
-  return forwardRequest(req, params)
+export async function DELETE(req: Request, { params }: { params: Promise<{ path: string[] }> }) {
+  const resolvedParams = await params
+  return forwardRequest(req, resolvedParams)
 }
-export async function PATCH(req: Request, { params }: { params: { path: string[] } }) {
-  return forwardRequest(req, params)
+export async function PATCH(req: Request, { params }: { params: Promise<{ path: string[] }> }) {
+  const resolvedParams = await params
+  return forwardRequest(req, resolvedParams)
 }
