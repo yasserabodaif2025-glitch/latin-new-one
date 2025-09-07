@@ -38,7 +38,7 @@ export default function AbsenceForm() {
     },
   })
 
-  async function onSubmit(data: AbsenceFormValues) {
+  async function onSubmit(_data: AbsenceFormValues) {
     try {
       // TODO: Add your API call here
       // await createAbsence(data)
@@ -46,7 +46,7 @@ export default function AbsenceForm() {
       form.reset()
       // use sonner API: toast.success / toast.error
       toast.success(`${t('absenceAdded')} - ${t('absenceAddedDescription')}`)
-    } catch (error) {
+    } catch {
       toast.error(`${t('error')}: ${t('errorAddingAbsence')}`)
     }
   }

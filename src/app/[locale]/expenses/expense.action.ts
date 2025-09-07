@@ -37,3 +37,8 @@ export async function restoreExpense(id: number) {
   const res = await axiosInstance.put(`${url}/${id}`)
   return res.data as IExpense
 }
+
+export async function createMyExpense(data: { amount: number; description: string; category?: string }) {
+  const res = await axiosInstance.post(`${url}/my-expense`, data)
+  return res.data
+}

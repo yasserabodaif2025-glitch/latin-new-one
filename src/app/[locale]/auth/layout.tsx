@@ -24,11 +24,11 @@ const cairo = Cairo({
 
 interface AuthLayoutProps {
   children: ReactNode
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }
 
 export default async function AuthLayout({ children, params }: AuthLayoutProps) {
-  const { locale } = await Promise.resolve(params)
+  const { locale } = await params
   const messages = await getMessages({ locale })
 
   return (
