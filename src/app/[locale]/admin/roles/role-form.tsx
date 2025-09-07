@@ -61,7 +61,7 @@ export function RoleForm({ open, onOpenChange, onSuccess, role }: RoleFormProps)
   useEffect(() => {
     if (role) {
       form.reset({
-        name: role.name,
+        name: role.name || '',
         description: role.description || '',
         isActive: role.isActive,
       });
@@ -72,7 +72,7 @@ export function RoleForm({ open, onOpenChange, onSuccess, role }: RoleFormProps)
         isActive: true,
       });
     }
-  }, [role, open]);
+  }, [role, open, form]);
 
   const onSubmit = async (data: RoleFormValues) => {
     try {
