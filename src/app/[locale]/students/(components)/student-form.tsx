@@ -59,7 +59,7 @@ export const StudentForm = ({ mode = formMode.create, data }: Props) => {
   const locale = useLocale()
   const t = useTranslations('student')
   const areas = useAreas()
-  const studentSources = useAgreements()
+  const { agreements: studentSources } = useAgreements()
   const { qualificationDescriptions } = useQualificationDescriptions()
   const { qualificationTypes } = useQualificationTypes()
   const { qualificationIssuers } = useQualificationIssuers()

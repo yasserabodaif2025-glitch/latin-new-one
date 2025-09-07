@@ -53,7 +53,7 @@ export const LeadForm = ({ mode = formMode.create, data }: Props) => {
   const qualificationTypes = useQualificationTypes()
   const qualificationIssuers = useQualificationIssuers()
   const { students } = useStudents()
-  const studentSources = useAgreements()
+  const { agreements: studentSources } = useAgreements()
   const defaultValues: LeadSchema = {
     name: data?.name ?? '',
     email: data?.email ?? '',
