@@ -50,9 +50,6 @@ export default function combinedMiddleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    '/',
-    '/(ar|en)/:path*',
-    '/api/:path*',
-  ],
+  // Matcher ignoring `/_next/` and `/api/`
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
 }
