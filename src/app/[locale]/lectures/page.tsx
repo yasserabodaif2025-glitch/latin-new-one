@@ -67,7 +67,7 @@ export default async function LecturesPage() {
     if (error instanceof AxiosError) {
       // If it's a 404, show the not found page
       if (error.response?.status === 404) {
-        notFound()
+        notFound() 
       }
 
       // For other errors, show the error display
