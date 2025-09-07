@@ -20,11 +20,10 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
 } from '@/components/ui/form'
 import { Checkbox } from '@/components/ui/checkbox'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { rolesService } from '@/lib/api/roles.service'
+import { rolesService, Permission as ApiPermission } from '@/lib/api/roles.service'
 
 type Permission = {
   id: string
@@ -56,7 +55,6 @@ export function PermissionsForm({
 }: PermissionsFormProps) {
   const t = useTranslations('roles')
   const [loading, setLoading] = useState(false)
-  const [permissions, setPermissions] = useState<Permission[]>([])
   const [groupedPermissions, setGroupedPermissions] = useState<Record<string, Permission[]>>({})
 
   const form = useForm<FormValues>({
@@ -70,14 +68,20 @@ export function PermissionsForm({
     const fetchPermissions = async () => {
       try {
         const data = await rolesService.getAllPermissions()
-        setPermissions(data)
 
-        // Group permissions by category
-        const grouped = data.reduce((acc: Record<string, Permission[]>, permission) => {
-          if (!acc[permission.category]) {
-            acc[permission.category] = []
+        // Group permissions by category - create mock categories since API doesn't provide them
+        const grouped = data.reduce((acc: Record<string, Permission[]>, permission: ApiPermission) => {
+          // Use permission code as category or default to 'General'
+          const category = permission.code?.split('_')[0] || 'General'
+          if (!acc[category]) {
+            acc[category] = []
           }
-          acc[permission.category].push(permission)
+          acc[category].push({
+            id: permission.id.toString(),
+            name: permission.code || 'Unknown Permission',
+            description: permission.description || '',
+            category
+          })
           return acc
         }, {})
 
@@ -92,7 +96,7 @@ export function PermissionsForm({
         const rolePermissions = await rolesService.getRolePermissions(roleId)
         form.setValue(
           'permissions',
-          rolePermissions.map((p: { id: string }) => p.id)
+          rolePermissions.map((p: ApiPermission) => p.id.toString())
         )
       } catch (error) {
         console.error('Error fetching role permissions:', error)
@@ -147,12 +151,13 @@ export function PermissionsForm({
                             <FormItem className="flex items-center space-x-3 space-y-0">
                               <FormControl>
                                 <Checkbox
-                                  checked={field.value?.includes(permission.id)}
+                                  checked={field.value?.includes(permission.id) || false}
                                   onCheckedChange={(checked) => {
+                                    const currentValue = field.value || []
                                     return checked
-                                      ? field.onChange([...field.value, permission.id])
+                                      ? field.onChange([...currentValue, permission.id])
                                       : field.onChange(
-                                          field.value?.filter((value) => value !== permission.id)
+                                          currentValue.filter((value) => value !== permission.id)
                                         )
                                   }}
                                 />

@@ -134,9 +134,9 @@ export const AttendanceModal = ({ isOpen, onClose, lecture }: AttendanceModalPro
               {students.map((student) => (
                 <div key={student.studentId} className="flex items-center gap-4 p-3 border rounded-lg">
                   <Checkbox
-                    checked={student.isPresent}
+                    checked={student.isPresent || false}
                     onCheckedChange={(checked) => 
-                      handleAttendanceChange(student.studentId, checked as boolean)
+                      handleAttendanceChange(student.studentId, Boolean(checked))
                     }
                   />
                   <div className="flex-1">

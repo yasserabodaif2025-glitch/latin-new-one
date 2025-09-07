@@ -16,37 +16,49 @@ import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { LogIn, LogOut } from 'lucide-react'
 import { LoginForm } from './login-form'
-import { LoginResponse } from './login.interface'
 // Removed server action import in client component
 import Image from 'next/image'
 import logo from '@/assets/logo-1.webp'
 
 type LoginModalProps = {
   isIcon?: boolean
+  initialAuth?: boolean
 }
 
-export function LoginModal({ isIcon = true }: LoginModalProps) {
+export function LoginModal({ isIcon = true, initialAuth = false }: LoginModalProps) {
   const [open, setOpen] = useState(false)
   const router = useRouter()
-  const [token, setToken] = useState<string | null>(null)
+  const [token, setToken] = useState<string | null>(initialAuth ? '1' : null)
+  const [isLoading, setIsLoading] = useState(!initialAuth)
   const t = useTranslations('auth')
+  
   useEffect(() => {
+    // Only fetch if we don't have initial auth state
+    if (initialAuth) {
+      setIsLoading(false)
+      return
+    }
+    
     let active = true
     ;(async () => {
       try {
         const res = await fetch('/api/auth/status', { cache: 'no-store' })
         if (!res.ok) return
         const data = (await res.json()) as { authenticated: boolean }
-        if (active) setToken(data.authenticated ? '1' : null)
+        if (active) {
+          setToken(data.authenticated ? '1' : null)
+          setIsLoading(false)
+        }
       } catch (e) {
         console.error(e)
+        if (active) setIsLoading(false)
       }
     })()
     return () => {
       active = false
     }
-  }, [])
-  const handleLogin = (response: LoginResponse) => {
+  }, [initialAuth])
+  const handleLogin = () => {
     // Immediately reflect authenticated state in UI
     setToken('1')
     setOpen(false)
@@ -66,7 +78,13 @@ export function LoginModal({ isIcon = true }: LoginModalProps) {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button size={isIcon ? 'icon' : 'default'} variant={'ghost'}>
-          {token ? isIcon ? <LogOut /> : t('logout') : isIcon ? <LogIn /> : t('login')}
+          {isLoading ? (
+            isIcon ? <LogIn /> : t('login')
+          ) : token ? (
+            isIcon ? <LogOut /> : t('logout')
+          ) : (
+            isIcon ? <LogIn /> : t('login')
+          )}
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
@@ -94,7 +112,7 @@ export function LoginModal({ isIcon = true }: LoginModalProps) {
               <Button onClick={handleLogout}>{t('logout')}</Button>
             </div>
           ) : (
-            <LoginForm hideHeader={true} loginSuccess={(response) => handleLogin(response)} />
+            <LoginForm hideHeader={true} loginSuccess={handleLogin} />
           )}
         </div>
       </DialogContent>

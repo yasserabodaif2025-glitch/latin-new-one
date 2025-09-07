@@ -47,7 +47,8 @@ const defaultColumns: ColumnDef<any>[] = [
         <Checkbox
           checked={
             table.getIsAllPageRowsSelected() ||
-            (table.getIsSomePageRowsSelected() && 'indeterminate')
+            (table.getIsSomePageRowsSelected() && 'indeterminate') ||
+            false
           }
           onCheckedChange={(value) => {
             return table.toggleAllPageRowsSelected(!!value)
@@ -60,7 +61,7 @@ const defaultColumns: ColumnDef<any>[] = [
     cell: ({ row }) => (
       <div className="flex items-center px-2">
         <Checkbox
-          checked={row.getIsSelected()}
+          checked={row.getIsSelected() || false}
           onCheckedChange={(value) => {
             return row.toggleSelected(!!value)
           }}

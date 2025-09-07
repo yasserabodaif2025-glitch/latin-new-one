@@ -191,4 +191,60 @@ export const rolesService = {
       }
     }
   },
+
+  // Get all permissions
+  async getAllPermissions(): Promise<Permission[]> {
+    try {
+      console.log('Fetching all permissions...')
+      const response = await axiosInstance.get<Permission[]>(`${apis.roles}/permissions`)
+      console.log('Permissions fetched successfully:', response.data)
+      return response.data
+    } catch (error: any) {
+      console.error('Error fetching permissions:', error)
+      if (error.response) {
+        throw new Error(error.response.data?.message || 'فشل جلب قائمة الصلاحيات')
+      } else if (error.request) {
+        throw new Error('لا يوجد اتصال بالخادم. يرجى التحقق من اتصال الشبكة والمحاولة مرة أخرى.')
+      } else {
+        throw new Error('حدث خطأ أثناء إعداد الطلب. الرجاء المحاولة مرة أخرى.')
+      }
+    }
+  },
+
+  // Get role permissions
+  async getRolePermissions(roleId: number): Promise<Permission[]> {
+    try {
+      console.log(`Fetching permissions for role ${roleId}...`)
+      const response = await axiosInstance.get<Permission[]>(`${apis.roles}/${roleId}/permissions`)
+      console.log('Role permissions fetched successfully:', response.data)
+      return response.data
+    } catch (error: any) {
+      console.error(`Error fetching permissions for role ${roleId}:`, error)
+      if (error.response) {
+        throw new Error(error.response.data?.message || 'فشل جلب صلاحيات الدور')
+      } else if (error.request) {
+        throw new Error('لا يوجد اتصال بالخادم. يرجى التحقق من اتصال الشبكة والمحاولة مرة أخرى.')
+      } else {
+        throw new Error('حدث خطأ أثناء إعداد الطلب. الرجاء المحاولة مرة أخرى.')
+      }
+    }
+  },
+
+  // Update role permissions
+  async updateRolePermissions(roleId: number, permissionIds: string[]): Promise<void> {
+    try {
+      console.log(`Updating permissions for role ${roleId}:`, permissionIds)
+      await axiosInstance.put(`${apis.roles}/${roleId}/permissions`, { permissionIds })
+      console.log('Role permissions updated successfully')
+    } catch (error: any) {
+      console.error(`Error updating permissions for role ${roleId}:`, error)
+      if (error.response) {
+        throw new Error(error.response.data?.message || 'فشل تحديث صلاحيات الدور')
+      } else if (error.request) {
+        throw new Error('لا يوجد اتصال بالخادم. يرجى التحقق من اتصال الشبكة والمحاولة مرة أخرى.')
+      } else {
+        throw new Error('حدث خطأ أثناء إعداد الطلب. الرجاء المحاولة مرة أخرى.')
+      }
+    }
+  },
 }

@@ -76,7 +76,7 @@ export default async function LocaleLayout(props: any) {
             className={`${geistSans.variable} ${geistMono.variable} ${cairo.variable} flex h-screen w-screen flex-col gap-4 overflow-hidden bg-neutral-100 antialiased dark:bg-neutral-900`}
             style={{ fontFamily: 'var(--font-cairo)' }}
           >
-            {isAuthenticated && <NavBar />}
+            {isAuthenticated && <NavBar isAuthenticated={isAuthenticated} />}
             <div className="flex w-full flex-grow gap-4 overflow-auto">
               {isAuthenticated && <DesktopSideMenu />}
               <div className="flex flex-1 grow overflow-hidden rounded-lg">

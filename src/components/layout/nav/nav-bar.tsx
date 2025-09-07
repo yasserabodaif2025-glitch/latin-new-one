@@ -17,7 +17,11 @@ const locales = ['en', 'ar'] as const
 const { Link } = createSharedPathnamesNavigation({ locales })
 
 
-export function NavBar() {
+interface NavBarProps {
+  isAuthenticated?: boolean
+}
+
+export function NavBar({ isAuthenticated = false }: NavBarProps) {
   const t = useTranslations('nav')
   const pathname = usePathname()
   const locale = useLocale()
@@ -89,7 +93,7 @@ export function NavBar() {
           <div className="hidden w-full !items-center !justify-center gap-2 md:flex">
             <ModeToggle />
             <LanguageSwitcher isIcon={false} />
-            <LoginModal isIcon={false} />
+            <LoginModal isIcon={false} initialAuth={isAuthenticated} />
           </div>
           <div className="block h-10 w-10 shrink-0 rounded-full border shadow-md md:hidden">
             <Link href="/" className="cursor-pointer">

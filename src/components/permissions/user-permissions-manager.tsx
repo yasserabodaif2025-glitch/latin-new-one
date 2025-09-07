@@ -155,7 +155,7 @@ export const UserPermissionsManager = ({ employee, onPermissionsUpdated }: UserP
                     <div key={role.id} className="flex items-start space-x-3 space-x-reverse">
                       <Checkbox
                         id={`role-${role.id}`}
-                        checked={selectedRoles.includes(role.id)}
+                        checked={selectedRoles.includes(role.id) || false}
                         onCheckedChange={() => handleRoleToggle(role.id)}
                       />
                       <div className="grid gap-1.5 leading-none">

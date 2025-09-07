@@ -269,7 +269,7 @@ export function LoginForm({ loginSuccess, hideHeader = false }: LoginFormProps) 
                       <FormControl>
                         <Checkbox
                           id="rememberMe"
-                          checked={!!field.value}
+                          checked={Boolean(field.value) || false}
                           onCheckedChange={(checked) => field.onChange(Boolean(checked))}
                           tabIndex={3}
                         />

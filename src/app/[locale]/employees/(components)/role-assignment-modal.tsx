@@ -139,7 +139,7 @@ export function RoleAssignmentModal({
                   <div key={role.id} className="flex items-center space-x-2 space-x-reverse">
                     <Checkbox
                       id={`role-${role.id}`}
-                      checked={selectedRoleIds.includes(role.id)}
+                      checked={selectedRoleIds.includes(role.id) || false}
                       onCheckedChange={() => handleRoleToggle(role.id)}
                     />
                     <label 
