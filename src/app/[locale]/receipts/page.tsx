@@ -1,12 +1,12 @@
 import ReceiptFormEnhanced from './(components)/receipt-form-enhanced'
 import { ReceiptTable } from './(components)/receipt-table'
 import './(components)/receipt-print.css'
-import { getTodayReceipts } from './receipt.action'
+import { getReceipts } from './receipt.action'
 
 export default async function ReceiptPage() {
   console.log('🏠 ReceiptPage component rendering...')
   
-  const receipts = await getTodayReceipts()
+  const receipts = await getReceipts()
   console.log('📊 Receipts in page component:', receipts)
 
   return (

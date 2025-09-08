@@ -17,11 +17,11 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { SaveIcon, PrinterIcon, MessageCircleIcon } from 'lucide-react'
 import { useEffect, useState, useRef } from 'react'
-import { getReceipts } from '../receipt.action'
-import { AnimatePresence, motion } from 'framer-motion'
-import { Badge } from '@/components/ui/badge'
+import { payStudentFees, getReceipts, chargeForService } from '../receipt.action'
 import { getStudents, getStudentBalance } from '../../students/student.action'
-import { createReceipt } from '../receipt.action'
+import { AnimatePresence, motion } from 'framer-motion'
+import Image from 'next/image'
+import { Badge } from '@/components/ui/badge'
 import { IStudent } from '../../students/(components)/student.interface'
 import { IStudentBalance } from './receipt.interface'
 import { toast } from 'sonner'
@@ -150,9 +150,29 @@ export default function ReceiptForm() {
   const onSubmit = async (data: ReceiptSchema) => {
     try {
       setIsLoading(true)
-      await createReceipt({ ...data, receiptNumber })
+      
+      // Handle different receipt types
+      if (data.receiptType === 'service_charge') {
+        // For service charges
+        await chargeForService({
+          studentId: Number(data.studentId),
+          amount: data.amount,
+          serviceType: data.serviceType || 'other',
+          description: data.description || '',
+          receiptNumber: receiptNumber
+        });
+      } else {
+        // For regular student payments
+        await payStudentFees({
+          studentId: Number(data.studentId),
+          amount: data.amount,
+          paymentMethod: 'cash', // Default payment method
+          notes: data.description || '',
+          receiptNumber: receiptNumber
+        });
+      }
 
-      // حفظ بيانات الإيصال المُنشأ حديثاً
+      // Save the newly created receipt data
       const selectedStudent = students.find((s) => s.id === Number(data.studentId))
       setLastCreatedReceipt({
         ...data,
@@ -528,7 +548,14 @@ export default function ReceiptForm() {
         <div ref={receiptRef} className="mx-auto mt-2 max-w-md rounded border bg-white p-3 text-xs">
           <div className="mb-2 flex items-center justify-between gap-2 border-b pb-2">
             <div className="flex items-center gap-2">
-              <img src="/assets/logo.webp" alt="logo" className="h-10 w-10 object-contain" />
+              <Image 
+                src="/assets/logo.webp" 
+                alt="logo" 
+                width={40} 
+                height={40} 
+                className="object-contain"
+                priority
+              />
               <div>
                 <h2 className="text-sm font-bold leading-none">الأكاديمية اللاتينية</h2>
                 <p className="text-[11px] text-gray-600">إيصال استلام</p>

@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -44,7 +43,7 @@ import { toast } from 'sonner'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ReceiptSchema } from '@/lib/schema/receipt.schema'
 import { getStudents, getStudentBalance } from '../../students/student.action'
-import { createReceipt, getReceipts, getTodayReceipts, cancelReceipt } from '../receipt.action'
+import { payStudentFees, getReceipts, chargeForService } from '../receipt.action'
 import { IStudent } from '../../students/(components)/student.interface'
 import { IStudentBalance } from './receipt.interface'
 
@@ -69,7 +68,6 @@ const formatDate = (date: Date) => {
 }
 
 export default function ReceiptFormEnhanced() {
-  const t = useTranslations('receipt')
   const [isLoading, setIsLoading] = useState(false)
   const [students, setStudents] = useState<IStudent[]>([])
   const [enrollments, setEnrollments] = useState<IStudentBalance[]>([])
@@ -86,23 +84,30 @@ export default function ReceiptFormEnhanced() {
         console.log('🔄 Fetching today receipts in form component...')
         console.log('👤 Employee code:', employeeCode)
         
-        const response = await getTodayReceipts()
-        console.log('📡 getTodayReceipts response:', response)
+        const response = await getReceipts()
+        console.log('📡 getReceipts response:', response)
         
         const allReceipts = response?.data || []
         console.log('📋 All receipts from API:', allReceipts)
-
-        // Filter receipts for current employee (if needed)
-        const filteredReceipts = allReceipts.filter((receipt: any) => {
-          const matches = receipt.employeeCode === employeeCode || !receipt.employeeCode
-          console.log(`🔍 Receipt ${receipt.receiptNumber} matches employee:`, matches)
-          return matches
+        
+        // Filter receipts for today
+        const today = new Date().toISOString().split('T')[0]
+        const todayReceipts = allReceipts.filter((receipt: any) => {
+          const receiptDate = new Date(receipt.createdAt).toISOString().split('T')[0]
+          return receiptDate === today
         })
-
-        console.log('✅ Filtered receipts for employee:', filteredReceipts)
-        setTodayReceipts(filteredReceipts)
+        
+        console.log('📅 Today\'s receipts:', todayReceipts)
+        setTodayReceipts(todayReceipts)
+        
+        // Update receipt number if there are receipts today
+        if (todayReceipts.length > 0) {
+          const lastReceiptNumber = todayReceipts[0].receiptNumber
+          console.log('🔢 Last receipt number today:', lastReceiptNumber)
+          setReceiptNumber(lastReceiptNumber)
+        }
       } catch (error) {
-        console.error("❌ Failed to fetch today's receipts:", error)
+        console.error('Error fetching today\'s receipts:', error)
       }
     }
 
@@ -202,11 +207,28 @@ export default function ReceiptFormEnhanced() {
       
       setIsLoading(true)
       
-      const receiptData = { ...data, receiptNumber }
-      console.log('💾 Sending receipt data to API:', receiptData)
+      console.log('💾 Processing receipt data:', data)
       
-      const apiResponse = await createReceipt(receiptData)
-      console.log('📡 API response for receipt creation:', apiResponse)
+      // Handle different receipt types
+      if (data.receiptType === 'service_charge') {
+        // For service charges
+        await chargeForService({
+          studentId: Number(data.studentId),
+          amount: data.amount,
+          serviceType: data.serviceType || 'other',
+          description: data.description || '',
+          receiptNumber: receiptNumber
+        });
+      } else {
+        // For regular student payments
+        await payStudentFees({
+          studentId: Number(data.studentId),
+          amount: data.amount,
+          paymentMethod: 'cash', // Default payment method
+          notes: data.description || '',
+          receiptNumber: receiptNumber
+        });
+      }
 
       const selectedStudent = students.find((s) => s.id === Number(data.studentId))
       console.log('👨‍🎓 Selected student:', selectedStudent)
@@ -264,21 +286,13 @@ export default function ReceiptFormEnhanced() {
     window.open(url, '_blank')
   }
 
-  const handleCancelReceipt = async (receiptNumber: string) => {
+  const handleCancelReceipt = async (_receiptNumber: string) => {
     try {
-      await cancelReceipt(receiptNumber)
-      toast.success('تم إلغاء الإيصال بنجاح')
-      
-      // Update the receipt status in the local state
-      setTodayReceipts(prev => 
-        prev.map(receipt => 
-          receipt.receiptNumber === receiptNumber 
-            ? { ...receipt, status: 'cancelled' }
-            : receipt
-        )
-      )
-    } catch {
-      toast.error('فشل في إلغاء الإيصال')
+      // TODO: Implement receipt cancellation
+      toast.error('إلغاء الإيصال غير متاح حالياً')
+    } catch (error) {
+      console.error('Error canceling receipt:', error)
+      toast.error('حدث خطأ أثناء محاولة إلغاء الإيصال')
     }
   }
 

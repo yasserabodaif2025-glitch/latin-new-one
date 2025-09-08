@@ -7,7 +7,7 @@ import { axiosInstance } from '@/lib/axiosInstance'
 import { getMyExpenses, getStudentPaymentHistory } from '@/lib/api/financial.service'
 
 // Helper function to get current employee ID
-async function getCurrentEmployeeId(): Promise<number> {
+export async function getCurrentEmployeeId(): Promise<number> {
   try {
     console.log('🔍 Getting current employee ID...')
     
@@ -61,7 +61,7 @@ async function getCurrentEmployeeId(): Promise<number> {
 }
 
 // Helper function to get receipts from various sources
-async function getReceiptsFromMultipleSources(): Promise<{ data: IReceipt[] }> {
+export async function getReceiptsFromMultipleSources(): Promise<{ data: IReceipt[] }> {
   console.log('🔄 Getting receipts from multiple sources...')
   const allReceipts: IReceipt[] = []
   

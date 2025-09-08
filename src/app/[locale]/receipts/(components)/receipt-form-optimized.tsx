@@ -18,8 +18,9 @@ import { Button } from '@/components/ui/button'
 import { SaveIcon, PrinterIcon, MessageCircleIcon } from 'lucide-react'
 import { useEffect, useState, useRef, useMemo } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import Image from 'next/image'
 import { Badge } from '@/components/ui/badge'
-import { createReceipt } from '../receipt.action'
+import { payStudentFees, chargeForService } from '../receipt.action'
 import { toast } from 'sonner'
 import { useStudents } from '../../students/(components)/useStudents'
 import { useStudentBalance } from '../../students/(components)/useStudentBalance'
@@ -121,21 +122,41 @@ export default function ReceiptFormOptimized() {
     setCurrentDate(formatDate(new Date()))
   }, [])
 
-  const onSubmit = async (data: ReceiptSchema) => {
+  const onSubmit = async (formData: ReceiptSchema) => {
     try {
-      setIsLoading(true)
-      await createReceipt({ ...data, receiptNumber })
+      setIsLoading(true);
+      
+      // Handle different receipt types
+      if (formData.receiptType === 'service_charge') {
+        // For service charges
+        await chargeForService({
+          studentId: Number(formData.studentId),
+          amount: formData.amount,
+          serviceType: formData.serviceType || 'other',
+          description: formData.description || '',
+          receiptNumber: receiptNumber
+        });
+      } else {
+        // For regular student payments
+        await payStudentFees({
+          studentId: Number(formData.studentId),
+          amount: formData.amount,
+          paymentMethod: 'cash', // Default payment method
+          notes: formData.description || '',
+          receiptNumber: receiptNumber
+        });
+      }
 
-      // حفظ بيانات الإيصال المُنشأ حديثاً
-      const selectedStudent = students.find((s) => s.id === Number(data.studentId))
+      // Save the newly created receipt data
+      const selectedStudent = students.find((s) => s.id === Number(formData.studentId));
       setLastCreatedReceipt({
-        ...data,
+        ...formData,
         receiptNumber,
         studentName: selectedStudent?.name,
         studentPhone: selectedStudent?.phone,
         employeeCode,
         createdAt: new Date().toISOString(),
-      })
+      });
 
       toast.success('Success', {
         description: 'Receipt created successfully.',
@@ -449,7 +470,14 @@ export default function ReceiptFormOptimized() {
         <div ref={receiptRef} className="mx-auto mt-2 max-w-md rounded border bg-white p-3 text-xs">
           <div className="mb-2 flex items-center justify-between gap-2 border-b pb-2">
             <div className="flex items-center gap-2">
-              <img src="/assets/logo.webp" alt="logo" className="h-10 w-10 object-contain" />
+              <Image 
+                src="/assets/logo.webp" 
+                alt="logo" 
+                width={40} 
+                height={40} 
+                className="object-contain"
+                priority
+              />
               <div>
                 <h2 className="text-sm font-bold leading-none">الأكاديمية اللاتينية</h2>
                 <p className="text-[11px] text-gray-600">إيصال استلام</p>

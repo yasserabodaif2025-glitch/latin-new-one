@@ -2,6 +2,7 @@
 
 import { axiosInstance } from '@/lib/axiosInstance'
 import { z } from 'zod'
+import { ReceiptSchema } from '@/lib/schema'
 
 const API_BASE_URL = '/api/FinancialOperations'
 
@@ -171,5 +172,80 @@ export async function closeMySafe() {
   } catch (error: any) {
     console.error('خطأ في إغلاق الخزنة:', error)
     throw new Error(error.response?.data?.message || 'فشل في إغلاق الخزنة')
+  }
+}
+
+// Helper function to get current employee ID
+async function getCurrentEmployeeId(): Promise<number> {
+  try {
+    // Try to get employee ID from the current user session
+    const response = await axiosInstance.get('/api/auth/me')
+    if (response.data?.employeeId) {
+      return response.data.employeeId
+    }
+    
+    // Fallback to a default employee ID if not found in session
+    console.warn('Employee ID not found in session, using default value')
+    return 1 // Default employee ID
+  } catch (error) {
+    console.error('Error getting employee ID:', error)
+    return 1 // Default employee ID in case of error
+  }
+}
+
+export async function createReceipt(data: ReceiptSchema) {
+  console.log('💾 Creating receipt with data:', data)
+  
+  try {
+    // Get the current employee ID
+    const employeeId = await getCurrentEmployeeId()
+    console.log('👤 Using employee ID:', employeeId)
+    
+    if (data.receiptType === 'student_payment') {
+      const payload = {
+        enrollmentId: data.enrollmentId,
+        amount: data.amount,
+        description: data.description,
+        employeeId: employeeId,
+        createdBy: employeeId,
+      }
+      console.log('🎓 Student payment payload:', payload)
+      
+      const res = await axiosInstance.post('FinancialOperations/student/pay', payload)
+      console.log('✅ Student payment response:', res.data)
+      return res.data
+    } else if (data.receiptType === 'service_charge') {
+      const payload = {
+        studentId: data.studentId,
+        serviceType: data.serviceType,
+        amount: data.amount,
+        description: data.description,
+        employeeId: employeeId,
+        createdBy: employeeId,
+      }
+      console.log('🔧 Service charge payload:', payload)
+      
+      const res = await axiosInstance.post('FinancialOperations/service-charge', payload)
+      console.log('✅ Service charge response:', res.data)
+      return res.data
+    } else if (data.receiptType === 'expense') {
+      const payload = {
+        amount: data.amount,
+        description: data.description,
+        employeeId: employeeId,
+        createdBy: employeeId,
+      }
+      console.log('💰 Expense payload:', payload)
+      
+      const res = await axiosInstance.post('FinancialOperations/my-expense', payload)
+      console.log('✅ Expense response:', res.data)
+      return res.data
+    }
+    
+    console.warn('⚠️ Unknown receipt type:', data.receiptType)
+    throw new Error(`نوع الإيصال غير معروف: ${data.receiptType}`)
+  } catch (error) {
+    console.error('❌ Error creating receipt:', error)
+    throw new Error(error instanceof Error ? error.message : 'فشل في إنشاء الإيصال')
   }
 }
