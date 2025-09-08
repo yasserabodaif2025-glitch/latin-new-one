@@ -1,25 +1,22 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import { useTranslations } from 'next-intl'
 
 export default function NotFound() {
+  const t = useTranslations('common.notFound')
+  
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4 text-center">
       <div className="space-y-4">
         <h1 className="text-6xl font-bold text-primary">404</h1>
-        <h2 className="text-2xl font-semibold">Page Not Found</h2>
-        <p className="text-muted-foreground">
-          Sorry, we couldn&apos;t find the page you&apos;re looking for.
-        </p>
+        <h2 className="text-2xl font-semibold">{t('title')}</h2>
+        <p className="text-muted-foreground">{t('description')}</p>
         <div className="pt-4">
           <Button asChild>
-            <Link href="/">Back to Home</Link>
+            <Link href="/dashboard">{t('backToHome')}</Link>
           </Button>
         </div>
       </div>
     </div>
   )
 }
-
-// This ensures that the 404 page is not cached
-// and will be revalidated on every request
-export const dynamic = 'force-dynamic'

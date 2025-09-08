@@ -69,6 +69,11 @@ const config: NextConfig = {
       },
     ]
   },
+  // Error handling is managed by the app/not-found.tsx and app/error.tsx files
+  // No need for customError configuration in Next.js 13+
+  // Disable default 404 page in favor of custom one
+  generateEtags: false,
+  // Image optimization
   images: {
     domains: [
       'avatars.githubusercontent.com', // GitHub avatars

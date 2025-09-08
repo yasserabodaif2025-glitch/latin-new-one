@@ -49,7 +49,18 @@
     "darkMode": "Dark Mode",
     "lightMode": "Light Mode",
     "guest": "Guest",
-    "branch": "Branch"
+    "branch": "Branch",
+    "notFound": {
+      "title": "Page Not Found",
+      "description": "Sorry, we couldn't find the page you're looking for.",
+      "backToHome": "Back to Home"
+    },
+    "error500": {
+      "title": "Server Error",
+      "description": "Sorry, something went wrong. Please try again later.",
+      "backToHome": "Back to Home",
+      "tryAgain": "Try Again"
+    }
   },
   "home": {
     "welcome": "Welcome to the Academy",

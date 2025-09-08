@@ -1,14 +1,14 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 
-export default function NotFound() {
+export default function Error500() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4 text-center">
       <div className="space-y-4">
-        <h1 className="text-6xl font-bold text-primary">404</h1>
-        <h2 className="text-2xl font-semibold">Page Not Found</h2>
+        <h1 className="text-6xl font-bold text-destructive">500</h1>
+        <h2 className="text-2xl font-semibold">Server Error</h2>
         <p className="text-muted-foreground">
-          Sorry, we couldn&apos;t find the page you&apos;re looking for.
+          Sorry, something went wrong. Please try again later.
         </p>
         <div className="pt-4">
           <Button asChild>
@@ -19,7 +19,3 @@ export default function NotFound() {
     </div>
   )
 }
-
-// This ensures that the 404 page is not cached
-// and will be revalidated on every request
-export const dynamic = 'force-dynamic'
