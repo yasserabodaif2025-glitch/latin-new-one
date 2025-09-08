@@ -22,7 +22,7 @@ export default function Error({
         <h1 className="text-6xl font-bold text-destructive">500</h1>
         <h2 className="text-2xl font-semibold">Something went wrong!</h2>
         <p className="text-muted-foreground">
-          Sorry, we're having some technical issues. Please try again later.
+          Sorry, we are having some technical issues. Please try again later.
         </p>
         <div className="flex justify-center gap-4 pt-4">
           <Button variant="outline" onClick={() => reset()}>
