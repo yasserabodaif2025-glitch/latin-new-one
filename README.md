@@ -1,24 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Latin Academy Management System
+
+This is a [Next.js](https://nextjs.org) project for managing Latin Academy's operations, including student management, course scheduling, and financial tracking.
+
+## Prerequisites
+
+- Node.js 18.17.0 or later
+- npm or yarn
+- API server URL (for backend communication)
+
+## Environment Variables
+
+Create a `.env.local` file in the root directory and add the following variables:
+
+```env
+# API Configuration
+NEXT_PUBLIC_API_URL=http://your-api-url:port/api
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your-secret-key-for-next-auth
+
+# Authentication (if using NextAuth.js)
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+
+# Other environment variables as needed
+```
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/latin-academy.git
+   cd latin-academy
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Set up environment variables (see above)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## Features
+
+- Student Management
+- Course Scheduling
+- Financial Tracking
+- Multi-language Support (English/Arabic)
+- Responsive Design
+
+## Tech Stack
+
+- Next.js 14
+- React 18
+- TypeScript
+- Tailwind CSS
+- Next-Intl (i18n)
+- TanStack Query (React Query)
+- Radix UI Components
 
 ## Learn More
 

@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { ColumnDef } from '@tanstack/react-table'
 import { useTranslations } from 'next-intl'
@@ -11,7 +13,33 @@ type Props = {
 
 export const ReceiptTable = ({ data }: Props) => {
   const t = useTranslations('receipt')
+  
+  console.log('📋 ReceiptTable component rendering with data:', data)
+  console.log('📊 Data length:', data?.length || 0)
+  
+  // Handle empty data
+  if (!data || data.length === 0) {
+    console.log('⚠️ No receipts data available')
+    return (
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h2 className="text-lg font-semibold">إيصالات اليوم</h2>
+          <span className="text-sm text-muted-foreground">
+            إجمالي الإيصالات: 0
+          </span>
+        </div>
+        <div className="text-center py-8 text-muted-foreground">
+          <p>لا توجد إيصالات ليوم اليوم</p>
+        </div>
+      </div>
+    )
+  }
+  
   const columns: ColumnDef<IReceipt>[] = [
+    {
+      accessorKey: 'receiptNumber',
+      header: 'رقم الإيصال',
+    },
     {
       accessorKey: 'studentName',
       header: t('student'),
@@ -19,27 +47,48 @@ export const ReceiptTable = ({ data }: Props) => {
     {
       accessorKey: 'amount',
       header: t('amountPaid'),
+      cell: ({ row }) => {
+        const amount = row.getValue('amount') as number
+        return <span className="font-medium">{amount?.toLocaleString()} ريال</span>
+      },
+    },
+    {
+      accessorKey: 'serviceType',
+      header: t('receiptType'),
     },
     {
       accessorKey: 'description',
       header: t('description'),
     },
     {
-      accessorKey: 'enrollment',
-      header: t('enrollment'),
+      accessorKey: 'date',
+      header: 'التاريخ',
+      cell: ({ row }) => {
+        const date = row.getValue('date') as string
+        return <span>{new Date(date).toLocaleDateString('ar-SA')}</span>
+      },
     },
     {
-      accessorKey: 'serviceType',
-      header: t('receiptType'),
+      accessorKey: 'createdBy',
+      header: 'أنشأ بواسطة',
     },
   ]
+  
   return (
-    <AppTable
-      title={t('title')}
-      columns={columns}
-      data={data}
-      mainRoute={routes.receipts}
-      hideHeaders
-    />
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <h2 className="text-lg font-semibold">إيصالات اليوم</h2>
+        <span className="text-sm text-muted-foreground">
+          إجمالي الإيصالات: {data.length}
+        </span>
+      </div>
+      <AppTable
+        title=""
+        columns={columns}
+        data={data}
+        mainRoute={routes.receipts}
+        hideHeaders={false}
+      />
+    </div>
   )
 }

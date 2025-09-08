@@ -44,7 +44,7 @@ import { toast } from 'sonner'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ReceiptSchema } from '@/lib/schema/receipt.schema'
 import { getStudents, getStudentBalance } from '../../students/student.action'
-import { createReceipt, getReceipts, cancelReceipt } from '../receipt.action'
+import { createReceipt, getReceipts, getTodayReceipts, cancelReceipt } from '../receipt.action'
 import { IStudent } from '../../students/(components)/student.interface'
 import { IStudentBalance } from './receipt.interface'
 
@@ -83,24 +83,34 @@ export default function ReceiptFormEnhanced() {
   useEffect(() => {
     const fetchTodayReceipts = async () => {
       try {
-        const today = new Date().toISOString().split('T')[0]
-        const response = await getReceipts()
+        console.log('🔄 Fetching today receipts in form component...')
+        console.log('👤 Employee code:', employeeCode)
+        
+        const response = await getTodayReceipts()
+        console.log('📡 getTodayReceipts response:', response)
+        
         const allReceipts = response?.data || []
+        console.log('📋 All receipts from API:', allReceipts)
 
-        // Filter receipts for today and current employee
+        // Filter receipts for current employee (if needed)
         const filteredReceipts = allReceipts.filter((receipt: any) => {
-          const receiptDate = new Date(receipt.createdAt).toISOString().split('T')[0]
-          return receiptDate === today && receipt.employeeCode === employeeCode
+          const matches = receipt.employeeCode === employeeCode || !receipt.employeeCode
+          console.log(`🔍 Receipt ${receipt.receiptNumber} matches employee:`, matches)
+          return matches
         })
 
+        console.log('✅ Filtered receipts for employee:', filteredReceipts)
         setTodayReceipts(filteredReceipts)
       } catch (error) {
-        console.error("Failed to fetch today's receipts:", error)
+        console.error("❌ Failed to fetch today's receipts:", error)
       }
     }
 
     if (employeeCode) {
+      console.log('🚀 Employee code available, fetching receipts...')
       fetchTodayReceipts()
+    } else {
+      console.log('⚠️ No employee code available yet')
     }
   }, [employeeCode, lastCreatedReceipt]) // Refresh when new receipt is created
 
@@ -186,22 +196,45 @@ export default function ReceiptFormEnhanced() {
 
   const onSubmit = async (data: ReceiptSchema) => {
     try {
+      console.log('📝 Form submission started with data:', data)
+      console.log('📝 Receipt number:', receiptNumber)
+      console.log('👤 Employee code:', employeeCode)
+      
       setIsLoading(true)
-      await createReceipt({ ...data, receiptNumber })
+      
+      const receiptData = { ...data, receiptNumber }
+      console.log('💾 Sending receipt data to API:', receiptData)
+      
+      const apiResponse = await createReceipt(receiptData)
+      console.log('📡 API response for receipt creation:', apiResponse)
 
       const selectedStudent = students.find((s) => s.id === Number(data.studentId))
-      setLastCreatedReceipt({
+      console.log('👨‍🎓 Selected student:', selectedStudent)
+      
+      const newReceipt = {
         ...data,
         receiptNumber,
         studentName: selectedStudent?.name,
         studentPhone: selectedStudent?.phone,
         employeeCode,
         createdAt: new Date().toISOString(),
+      }
+      
+      console.log('🆕 New receipt object:', newReceipt)
+      
+      setLastCreatedReceipt(newReceipt)
+      
+      // Add the new receipt to today's receipts list
+      setTodayReceipts(prev => {
+        const updated = [newReceipt, ...prev]
+        console.log('📋 Updated today receipts list:', updated)
+        return updated
       })
 
       toast.success('تم إنشاء الإيصال بنجاح')
       form.reset()
-    } catch {
+    } catch (error) {
+      console.error('❌ Error creating receipt:', error)
       toast.error('فشل في إنشاء الإيصال')
     } finally {
       setIsLoading(false)
@@ -235,15 +268,15 @@ export default function ReceiptFormEnhanced() {
     try {
       await cancelReceipt(receiptNumber)
       toast.success('تم إلغاء الإيصال بنجاح')
-      // تحديث القائمة
-      const response = await getReceipts()
-      const allReceipts = response?.data || []
-      const today = new Date().toISOString().split('T')[0]
-      const filteredReceipts = allReceipts.filter((receipt: any) => {
-        const receiptDate = new Date(receipt.createdAt).toISOString().split('T')[0]
-        return receiptDate === today && receipt.employeeCode === employeeCode
-      })
-      setTodayReceipts(filteredReceipts)
+      
+      // Update the receipt status in the local state
+      setTodayReceipts(prev => 
+        prev.map(receipt => 
+          receipt.receiptNumber === receiptNumber 
+            ? { ...receipt, status: 'cancelled' }
+            : receipt
+        )
+      )
     } catch {
       toast.error('فشل في إلغاء الإيصال')
     }

@@ -5,20 +5,57 @@ import { INewReceipt } from './(components)/new-receipt.interface'
 import { NewReceiptSchema } from '@/lib/schema/new-receipt.schema'
 import { IResponse } from '@/lib/AbstractApi'
 import { axiosInstance } from '@/lib/axiosInstance'
+import { getReceipts } from '@/lib/api/financial.service'
 
 const url = apis.receipts
 
-export async function getNewReceipts() {
-  // لا يوجد endpoint في API لجلب جميع الإيصالات
-  // بناءً على swagger.json، FinancialOperations لا يحتوي على pagination endpoint
-  console.warn('No API endpoint available for fetching all receipts')
-  return { 
-    data: [], 
-    total: 0, 
-    page: 1, 
-    limit: 10,
-    success: false 
-  } as IResponse<INewReceipt[]>
+export async function getNewReceipts(params: { page?: number, pageSize?: number, fromDate?: string, toDate?: string, employeeId?: number } = {}) {
+  try {
+    const today = new Date().toISOString().split('T')[0];
+    const defaultParams = {
+      page: 1,
+      pageSize: 10,
+      fromDate: today,
+      toDate: today,
+      ...params
+    };
+
+    const response = await getReceipts(defaultParams);
+    
+    // Map to INewReceipt if necessary
+    const mappedItems = response.items.map(item => ({
+      id: item.id,
+      studentId: item.studentId,
+      studentName: item.studentName,
+      amount: item.amount,
+      date: item.date,
+      receiptNumber: item.receiptNumber,
+      description: item.description,
+      type: item.type,
+      receiptType: item.receiptType,
+      createdBy: item.createdByName,
+      createdAt: item.createdAt,
+      enrollment: item.enrollment,
+      serviceType: item.serviceType,
+    }));
+
+    return {
+      data: mappedItems,
+      total: response.total,
+      page: response.page,
+      limit: response.pageSize,
+      success: true
+    } as IResponse<INewReceipt[]>;
+  } catch (error) {
+    console.error('Error fetching receipts:', error);
+    return { 
+      data: [], 
+      total: 0, 
+      page: 1, 
+      limit: 10,
+      success: false 
+    } as IResponse<INewReceipt[]>;
+  }
 }
 
 // جلب أرصدة طالب محدد

@@ -13,9 +13,18 @@ import { createMyExpense } from '../../expenses/expense.action'
 import { toast } from 'sonner'
 
 const MyExpenseSchema = z.object({
-  amount: z.number().min(1, 'المبلغ مطلوب'),
-  description: z.string().min(1, 'الوصف مطلوب'),
-  category: z.string().optional(),
+  amount: z
+    .number({ invalid_type_error: 'المبلغ يجب أن يكون رقمًا' })
+    .positive('المبلغ يجب أن يكون أكبر من صفر')
+    .min(1, 'الحد الأدنى للمبلغ هو 1'),
+  description: z
+    .string({ required_error: 'الوصف مطلوب' })
+    .min(3, 'الوصف يجب أن لا يقل عن 3 أحرف')
+    .max(500, 'الوصف يجب أن لا يزيد عن 500 حرف'),
+  category: z
+    .string()
+    .max(100, 'الفئة يجب أن لا تزيد عن 100 حرف')
+    .optional(),
 })
 
 type MyExpenseSchemaType = z.infer<typeof MyExpenseSchema>
@@ -36,15 +45,16 @@ export default function MyExpenseForm() {
     try {
       setIsLoading(true)
       await createMyExpense(data)
-      
-      toast.success('نجح', {
-        description: 'تم إنشاء المصروف الشخصي بنجاح.',
+
+      toast.success('تم الحفظ بنجاح', {
+        description: 'تم تسجيل المصروف الشخصي بنجاح.',
       })
-      
+
       form.reset()
-    } catch {
-      toast.error('خطأ', {
-        description: 'فشل في إنشاء المصروف الشخصي.',
+    } catch (err: any) {
+      const apiMessage = err?.response?.data?.message || err?.message
+      toast.error('لم يتم الحفظ', {
+        description: apiMessage || 'حدث خطأ أثناء إنشاء المصروف الشخصي.',
       })
     } finally {
       setIsLoading(false)
@@ -54,8 +64,8 @@ export default function MyExpenseForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <div className="bg-white p-6 rounded-lg shadow-sm border">
-          <h2 className="text-lg font-semibold mb-4">إضافة مصروف شخصي</h2>
+        <div className="rounded-lg border bg-card p-6 shadow-sm">
+          <h2 className="mb-4 text-lg font-semibold">إضافة مصروف شخصي</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField
@@ -69,7 +79,7 @@ export default function MyExpenseForm() {
                       type="number" 
                       {...field} 
                       onChange={(e) => field.onChange(Number(e.target.value))}
-                      placeholder="أدخل المبلغ"
+                      placeholder="أدخل المبلغ (مثال: 100)"
                     />
                   </FormControl>
                 </FormItem>
@@ -83,7 +93,7 @@ export default function MyExpenseForm() {
                 <FormItem>
                   <FormLabel>الفئة (اختياري)</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder="فئة المصروف" />
+                    <Input {...field} placeholder="فئة المصروف (مثال: مواصلات، ضيافة)" />
                   </FormControl>
                 </FormItem>
               )}
@@ -97,16 +107,16 @@ export default function MyExpenseForm() {
               <FormItem>
                 <FormLabel>الوصف</FormLabel>
                 <FormControl>
-                  <Textarea {...field} placeholder="وصف المصروف" rows={3} />
+                  <Textarea {...field} placeholder="اكتب وصفًا موجزًا للمصروف" rows={3} />
                 </FormControl>
               </FormItem>
             )}
           />
 
           <div className="flex justify-end mt-6">
-            <Button type="submit" disabled={isLoading}>
-              <SaveIcon className="h-4 w-4 mr-2" />
-              حفظ المصروف
+            <Button type="submit" disabled={isLoading} className="min-w-32">
+              <SaveIcon className="mr-2 h-4 w-4" />
+              {isLoading ? 'جارٍ الحفظ...' : 'حفظ المصروف'}
             </Button>
           </div>
         </div>

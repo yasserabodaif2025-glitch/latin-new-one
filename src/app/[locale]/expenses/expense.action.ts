@@ -39,6 +39,7 @@ export async function restoreExpense(id: number) {
 }
 
 export async function createMyExpense(data: { amount: number; description: string; category?: string }) {
-  const res = await axiosInstance.post(`${url}/my-expense`, data)
+  // Per swagger, this endpoint resides under FinancialOperations
+  const res = await axiosInstance.post(`${apis.receipts}/my-expense`, data)
   return res.data
 }
